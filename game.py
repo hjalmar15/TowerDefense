@@ -22,11 +22,16 @@ def introMenu():
         run = True
         
         while run:
+                mouseClicked = False
                 screen.fill(white)
+                
                 for event in pygame.event.get():
-                    if event.type == pygame.QUIT:
-                        pygame.quit()
-                        quit()
+                        if event.type == pygame.QUIT:
+                                pygame.quit()
+                                quit()
+                        elif event.type == pygame.MOUSEBUTTONUP:
+                                mouseClicked = True
+                                
                 print(event)
 
                 font = pygame.font.Font('freesansbold.ttf',30)
@@ -45,13 +50,12 @@ def introMenu():
                         screen.blit(tex, texR)
                         y += 35
                         isClick.append(texR)
-                #clickable menu items        
-                if pygame.event.get(pygame.MOUSEBUTTONUP):
-                        if isClick[0].collidepoint(pygame.mouse.get_pos()):
-                                theGame()
-                        if isClick[1].collidepoint(pygame.mouse.get_pos()):
-                                pygame.quit()
-                                quit()
+                #clickable menu items
+                if mouseClicked and isClick[0].collidepoint(event.pos):
+                        theGame()
+                if mouseClicked and isClick[1].collidepoint(event.pos):
+                        pygame.quit()
+                        quit()
                                 
                 pygame.display.update()
                 clock.tick(15)
