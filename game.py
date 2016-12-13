@@ -20,11 +20,10 @@ def introMenu():
         #list of menu text
         text = ['Play Game', 'Quit']
         run = True
-        
+        bg = pygame.image.load("harambe.png")
         while run:
                 mouseClicked = False
-                screen.fill(white)
-                
+                screen.blit(bg, (0,0))
                 for event in pygame.event.get():
                         if event.type == pygame.QUIT:
                                 pygame.quit()
