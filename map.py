@@ -2,8 +2,8 @@ import pygame, sys
 from pygame.locals import *
 
 
-display_width = 600
-display_height = 600
+display_width = 1000
+display_height = 720
 
 #40 * 15 = 600
 
@@ -60,7 +60,7 @@ pygame.init()
 DISPLAYSURF = pygame.display.set_mode((display_width, display_height))
 
 
-def drawBoard():
+def drawBoard(row, column):
         for row in range(MAPHEIGHT):
                 for column in range(MAPWIDTH):
                         #images/textures
@@ -84,22 +84,22 @@ def drawTowers():
                                 DISPLAYSURF.blit(Bomber, (row, column))
 
 
-while True:
-
-        for event in pygame.event.get():
-                if event.type == QUIT:
-                        pygame.quit()
-                        sys.exit()
-
-        drawBoard()
-
-        drawTowers()
-
-                        
-
-                        
-        
-
-        pygame.display.update()
+##while True:
+##
+##        for event in pygame.event.get():
+##                if event.type == QUIT:
+##                        pygame.quit()
+##                        sys.exit()
+##
+##        drawBoard()
+##
+##        drawTowers()
+##
+##                        
+##
+##                        
+##        
+##
+##        pygame.display.update()
 
         

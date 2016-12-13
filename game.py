@@ -5,8 +5,8 @@ from Enemy import *
 from Map import *
 pygame.init()
 
-display_width = 800
-display_height = 600
+display_width = 1280
+display_height = 720
 
 black = (0,0,0)
 white = (255,255,255)
@@ -51,7 +51,8 @@ def introMenu():
                 clock.tick(15)
         
 def theGame():
-        #Initialize mouse and selection
+        #Initialize mouse and screen
+        screen.fill(black)
         mousex = 0
         mousey = 0
         selectedTower = None
@@ -60,9 +61,9 @@ def theGame():
         money = 200
         score = 0
         lives = 5
-        drawBoard()
+        drawBoard(1000, 720)
         run = True
-        screen.fill(black)
+
         while run:
                 for event in pygame.event.get():
                         if event.type == pygame.QUIT:
@@ -74,6 +75,7 @@ def theGame():
                                 mousex, mousey = event.pos
                                 mouseClicked = True
                 pygame.display.flip()
+                clock.tick(30)
                 
 introMenu()
 pygame.quit()
