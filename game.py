@@ -32,8 +32,6 @@ def introMenu():
                         elif event.type == pygame.MOUSEBUTTONUP:
                                 mouseClicked = True
                                 
-                print(event)
-
                 font = pygame.font.Font('freesansbold.ttf',30)
                 x = display_width/2
                 y = display_height/2
