@@ -17,8 +17,10 @@ clock = pygame.time.Clock()
 screen = pygame.display.set_mode((display_width, display_height))
 
 def introMenu():
+        #list of menu text
         text = ['Play Game', 'Quit']
         run = True
+        
         while run:
                 screen.fill(white)
                 for event in pygame.event.get():
@@ -26,10 +28,14 @@ def introMenu():
                         pygame.quit()
                         quit()
                 print(event)
+
                 font = pygame.font.Font('freesansbold.ttf',30)
                 x = display_width/2
                 y = display_height/2
+                #isClick = stores location of menu items "rect"
                 isClick = []
+                
+                # writes menu text, diff col if mouseover
                 for t in text:
                         tex = font.render(t, True, black)
                         texR = tex.get_rect()
@@ -39,7 +45,7 @@ def introMenu():
                         screen.blit(tex, texR)
                         y += 35
                         isClick.append(texR)
-                        
+                #clickable menu items        
                 if pygame.event.get(pygame.MOUSEBUTTONUP):
                         if isClick[0].collidepoint(pygame.mouse.get_pos()):
                                 theGame()
@@ -61,7 +67,7 @@ def theGame():
         money = 200
         score = 0
         lives = 5
-        drawBoard(1000, 720)
+        drawBoard()
         run = True
 
         while run:
