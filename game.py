@@ -15,12 +15,14 @@ red = (255,0,0)
 clock = pygame.time.Clock()
 
 screen = pygame.display.set_mode((display_width, display_height))
-
 def introMenu():
         #list of menu text
         text = ['Play Game', 'Quit']
         run = True
         bg = pygame.image.load("harambe.png")
+        
+        pygame.mixer.music.load("menu.mp3")
+        pygame.mixer.music.play(-1)
         while run:
                 mouseClicked = False
                 screen.blit(bg, (0,0))
@@ -59,6 +61,7 @@ def introMenu():
         
 def theGame():
         #Initialize mouse and screen
+        pygame.mixer.music.stop()
         screen.fill(black)
         mousex = 0
         mousey = 0
