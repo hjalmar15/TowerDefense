@@ -1,6 +1,8 @@
 import pygame
 import time
-
+from Tower import *
+from Enemy import *
+from Map import *
 pygame.init()
 
 display_width = 800
@@ -49,6 +51,16 @@ def introMenu():
                 clock.tick(15)
         
 def theGame():
+        #Initialize mouse and selection
+        mousex = 0
+        mousey = 0
+        selectedTower = None
+        mouseClicked = False
+        #Initialize game
+        money = 200
+        score = 0
+        lives = 5
+        drawBoard()
         run = True
         screen.fill(black)
         while run:
@@ -56,6 +68,11 @@ def theGame():
                         if event.type == pygame.QUIT:
                                 pygame.quit()
                                 quit()
+                        elif event.type == pygame.MOUSEMOTION:
+                                mousex, mousey = event.pos
+                        elif event.type == pygame.MOUSEBUTTONUP:
+                                mousex, mousey = event.pos
+                                mouseClicked = True
                 pygame.display.flip()
                 
 introMenu()
