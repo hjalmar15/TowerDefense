@@ -6,6 +6,8 @@ class Enemy(object):
         self.description = ''
         self.speed = 0.5
         self.health = 0
+        self.price = 0
+        self.score = 0
         self.img = ''
 
 class yellow(Enemy):
@@ -15,6 +17,8 @@ class yellow(Enemy):
         self.speed = 1.0
         self.health = 25
         self.description = 'Yellow is a farmer in the angry head village that was sent by King Angry Head to destroy your kingdom'
+        self.price = 25
+        self.score = 50
         self.img = '/Sprites/Yellow.png'
 
 class green(Enemy):
@@ -24,6 +28,8 @@ class green(Enemy):
         self.speed = 1.0
         self.health = 50
         self.description = 'Green is a civilian in the angry head village that was sent by King Angry Head to destroy your kingdom'
+        self.price = 50
+        self.score = 100
         self.img = '/Sprites/Green.png'
 
 class blue(Enemy):
@@ -33,6 +39,8 @@ class blue(Enemy):
         self.speed = 2.0
         self.health = 100
         self.description = 'Green is a soldier in the angry head village that was sent by King Angry Head to destroy your kingdom'
+        self.price = 100
+        self.score = 200
         self.img = '/Sprites/Blue.png'
 
 class red(Enemy):
@@ -42,6 +50,8 @@ class red(Enemy):
         self.speed = 3.0
         self.health = 1000
         self.description = 'King Angry Head himself has come to destroy your kingdom!'
+        self.price = 1000
+        self.score = 4000
         self.img = '/Sprites/Red.png'
 
     
