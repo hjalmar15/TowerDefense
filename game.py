@@ -76,7 +76,7 @@ def theGame():
         
         run = True
 
-        block = Block(black, 30,30)
+        block = Block()
         
         allSprites = pygame.sprite.Group()
         allSprites.add(block)
