@@ -35,7 +35,7 @@ def introMenu():
                         elif event.type == pygame.MOUSEBUTTONUP:
                                 mouseClicked = True
                                 
-                font = pygame.font.Font('freesansbold.ttf',30)
+                font = pygame.font.Font('Fonts/freesansbold.ttf',30)
                 x = display_width/2
                 y = display_height/2
                 #isClick = stores location of menu items "rect"
@@ -73,7 +73,7 @@ def theGame():
         money = 200
         score = 0
         lives = 5
-        
+        level = 0
         run = True
 
         red = Red()
@@ -95,11 +95,62 @@ def theGame():
                                 mousex, mousey = event.pos
                                 mouseClicked = True
                 if 1 == 3:
-                        youWin()        
+                        youWin()
+                if mouseClicked:
+                        whatClicked = click(mousex, mousey, level)
+                        if whatClicked == 'placeSh':
+                                placeTower(8)
+                        if whatClicked == 'placeB':
+                                placeTower(7)
+                        if whatClicked == 'placeSn':
+                                placeTower(9)
                 allSprites.update()
                 allSprites.draw(screen)
                 pygame.display.flip()
                 clock.tick(30)
+
+def click(mousex, mousey, level):
+	if mousex >= 1050 and mousex <= 1090 and mousey >= 120 and mousey <= 160:
+		return 'placeSh'
+	elif mousex >= 1050 and mousex <= 1090 and mousey >= 200 and mousey <= 240:
+		return 'placeB'
+	elif mousex >= 1050 and mousex <= 1090 and mousey >= 280 and mousey <= 320:
+		return 'placeSn'
+	elif mousex >= 1050 and mousex <= 1230 and mousey >= 650 and mousey <= 710:
+		return 'start'
+	else:
+		return None
+
+##def startWave(level):
+        
+        
+def placeTower(tower):
+        mouseClick = False
+        runIt = True
+        while runIt:
+                for event in pygame.event.get():
+                        if event.type == pygame.QUIT:
+                                pygame.quit()
+                                quit()
+                        elif event.type == pygame.MOUSEMOTION:
+                                mousex, mousey = event.pos
+                        elif event.type == pygame.MOUSEBUTTONUP:
+                                mousex, mousey = event.pos
+                                mouseClick = True
+                if mouseClick == True:
+                        x, y = getGridAtPixel(mousex, mousey)
+                        x1 = int(x)
+                        y1 = int(y)
+                        if tilemap[y1][x1] == 1:
+                                tilemap[y1][x1] = tower
+                                runIt = False
+        
+def getGridAtPixel(mousex, mousey):
+	x = (mousex) / 40
+	y = (mousey) / 40
+	if x >= 0 and x <= 25 and y >= 0 and y <= 18:
+		return x, y
+	
                 
 introMenu()
 pygame.quit()
