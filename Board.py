@@ -9,8 +9,8 @@ TILESIZE = 40
 MAPWIDTH = 32
 MAPHEIGHT = 18
 
-
-GRAY = (87, 59, 12)
+GREY = (180, 171, 171)
+BROWN = (87, 59, 12)
 GREEN = (34, 139, 34)
 BLUE = (0, 0, 255)
 RED = (255, 0 , 0)
@@ -30,12 +30,15 @@ TOWERS = 10
 WIN = 11
 
 
+colors = {
+        PATH: BROWN,
+        GRASS: GREEN,
+        SHOP: GREY,
+        }
 
 
 #load images
 textures = {
-        PATH: pygame.image.load('Sprites/Mud.png'),
-        GRASS: pygame.image.load('Sprites/Grass.png'),
         BOMBER: pygame.image.load('Sprites/Bomber.png'),
         SHOOTER: pygame.image.load('Sprites/Shooter.png'),
         SNIPER: pygame.image.load('Sprites/Sniper.png'),
@@ -43,7 +46,8 @@ textures = {
         TITLE: pygame.image.load('Sprites/Title.png'),
         START: pygame.image.load('Sprites/Start.png'),
         TOWERS: pygame.image.load('Sprites/Towers.png'),
-        WIN: pygame.image.load('Sprites/youWin.gif')}
+        WIN: pygame.image.load('Sprites/youWin.gif')
+        }
 
 
 tilemap = [
@@ -68,8 +72,7 @@ tilemap = [
         ]
 
 
-
-pygame.init()
+#pygame.init()
 
 DISPLAYSURF = pygame.display.set_mode((display_width, display_height))
 
@@ -80,7 +83,12 @@ def drawBoard():
         
         for row in range(MAPHEIGHT):
                 for column in range(MAPWIDTH):
-                        DISPLAYSURF.blit(textures[tilemap[row][column]], (column*TILESIZE, row*TILESIZE, TILESIZE, TILESIZE))
+                        if(tilemap[row][column] < 2 or tilemap[row][column] == 5):
+                                #draw tilemap as rectangles in certain colors
+                                pygame.draw.rect(DISPLAYSURF, colors[tilemap[row][column]], (column*TILESIZE, row*TILESIZE, TILESIZE, TILESIZE))
+
+                        #draw tilemap as images
+                        #DISPLAYSURF.blit(textures[tilemap[row][column]], (column*TILESIZE, row*TILESIZE, TILESIZE, TILESIZE))
                                 
 def drawTowers():
         for row in range(MAPHEIGHT):
@@ -98,6 +106,7 @@ def drawButtons():
          
 
 def getEnemyPath():
+        
         enemyPath = [(0,2), (1,2), (1,16), (3,16), (3,1), (22,1), (22,3), (5,3), (5,16), (8,16), (8,6), (22,6), (22,16), (20,16), (20,9), (11,9), (11,12), (17,12), (17,15), (11,15), (11,17)]
 
         return enemyPath
