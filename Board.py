@@ -24,6 +24,8 @@ START = 2
 FINISH = 3
 BOMBER = 4
 SHOP = 5
+TITLE = 6
+START = 7
 
 
 
@@ -33,7 +35,9 @@ textures = {
         PATH: pygame.image.load('Sprites/Mud.png'),
         GRASS: pygame.image.load('Sprites/Grass.png'),
         BOMBER: pygame.image.load('Sprites/Bomber.png'),
-        SHOP: pygame.image.load('Sprites/Shop.png')}
+        SHOP: pygame.image.load('Sprites/Shop.png'),
+        TITLE: pygame.image.load('Sprites/Title.png'),
+        START: pygame.image.load('Sprites/Start.png')}
 
 
 #colours = {PATH: GRAY, GRASS: GREEN, START: BLUE, FINISH: RED}
@@ -96,6 +100,10 @@ def drawTowers():
                                 #a.topleft = ((row * 50 + 40), (column * 40 + 40))
                                 #DISPLAYSURF.blit(Bomber, (row, column))
                                 DISPLAYSURF.blit(textures[tilemap[row][column]], (column*TILESIZE, row*TILESIZE, TILESIZE, TILESIZE))
+
+def drawButtons():
+         DISPLAYSURF.blit(textures[6], (1050, 20))
+         DISPLAYSURF.blit(textures[7], (1050, 650))
 
 def getEnemyPath():
         path = []
