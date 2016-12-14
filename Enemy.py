@@ -95,4 +95,4 @@ class Red(pygame.sprite.Sprite):
             self.rect.y -= 1
         else:
             self.count += 1
-            a,b = path[self.count]
+            a,b = PATH[self.count]
