@@ -5,8 +5,6 @@ from pygame.locals import *
 display_width = 1280
 display_height = 720
 
-#40 * 15 = 600
-
 TILESIZE = 40
 MAPWIDTH = 32
 MAPHEIGHT = 18
@@ -48,9 +46,6 @@ textures = {
         WIN: pygame.image.load('Sprites/youWin.gif')}
 
 
-#colours = {PATH: GRAY, GRASS: GREEN, START: BLUE, FINISH: RED}
-
-
 tilemap = [
                 [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 5, 5, 5, 5, 5, 5, 5],
                 [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 5, 5, 5, 5, 5, 5, 5],
@@ -85,26 +80,12 @@ def drawBoard():
         
         for row in range(MAPHEIGHT):
                 for column in range(MAPWIDTH):
-
-                        #scale(Surface, (width, height)
-                        #images/textures
                         DISPLAYSURF.blit(textures[tilemap[row][column]], (column*TILESIZE, row*TILESIZE, TILESIZE, TILESIZE))
-
-                        #colours
-##                        if(tilemap[row][column] < 4):
-##                                pygame.draw.rect(DISPLAYSURF, colours[tilemap[row][column]], (column * TILESIZE, row * TILESIZE, TILESIZE, TILESIZE))
-##
-##                        
-##                        elif(tilemap[row][column] > 6):
-##                                pygame.draw.rect(DISPLAYSURF, GREEN, (column * TILESIZE, row * TILESIZE, TILESIZE, TILESIZE))
-##
                                 
 def drawTowers():
         for row in range(MAPHEIGHT):
                 for column in range(MAPWIDTH):
                         if(tilemap[row][column] == 4):
-                                #a.topleft = ((row * 50 + 40), (column * 40 + 40))
-                                #DISPLAYSURF.blit(Bomber, (row, column))
                                 DISPLAYSURF.blit(textures[tilemap[row][column]], (column*TILESIZE, row*TILESIZE, TILESIZE, TILESIZE))
 
 def drawButtons():
@@ -124,22 +105,3 @@ def getEnemyPath():
 def youWin():
         DISPLAYSURF.blit(textures[11], (350, 220))
 
-##while True:
-##
-##        for event in pygame.event.get():
-##                if event.type == QUIT:
-##                        pygame.quit()
-##                        sys.exit()
-##
-##        drawBoard()
-##
-##        drawTowers()
-##
-##                        
-##
-##                        
-##        
-##
-##        pygame.display.update()
-
-        
