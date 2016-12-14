@@ -1,5 +1,6 @@
 import pygame
 from Board import *
+PATH = getEnemyPath()
 class Enemy(object):
     def __init__(self, path, board):
         self.path = path
@@ -55,16 +56,16 @@ class red(Enemy):
         self.price = 1000
         self.score = 4000
         self.img = '/Sprites/Red.png'
+
         
-path = getEnemyPath()
-class Block(pygame.sprite.Sprite):
+class Red(pygame.sprite.Sprite):
     count = 1
     def __init__(self):
        # Call the parent class (Sprite) constructor
        pygame.sprite.Sprite.__init__(self)
        self.count = 1
        
-       x,y = path[0]
+       x,y = PATH[0]
        x *= 40
        y *= 40
        
@@ -79,7 +80,7 @@ class Block(pygame.sprite.Sprite):
         
     def update(self):
         """ Called each frame. """
-        a,b = path[self.count]
+        a,b = PATH[self.count]
         #right
         if self.rect.x < (a*40) and self.rect.y >= (b*40):
             self.rect.x += 1

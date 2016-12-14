@@ -76,10 +76,10 @@ def theGame():
         
         run = True
 
-        block = Block()
+        red = Red()
         
         allSprites = pygame.sprite.Group()
-        allSprites.add(block)
+        allSprites.add(red)
         
         while run:
                 drawBoard()
