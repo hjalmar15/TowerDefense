@@ -21,7 +21,7 @@ def introMenu():
         #list of menu text
         text = ['Play Game', 'Quit']
         run = True
-        bg = pygame.image.load("harambe.png")
+        bg = pygame.image.load("Sprites/BoostedHeads.png")
         
         pygame.mixer.music.load("menu.mp3")
         pygame.mixer.music.play(-1)
@@ -37,7 +37,7 @@ def introMenu():
                                 
                 font = pygame.font.Font('Fonts/freesansbold.ttf',30)
                 x = display_width/2
-                y = display_height/2
+                y = display_height/3
                 #isClick = stores location of menu items "rect"
                 isClick = []
                 
@@ -49,7 +49,7 @@ def introMenu():
                         if texR.collidepoint(pygame.mouse.get_pos()):
                                 tex = font.render(t, True, red)
                         screen.blit(tex, texR)
-                        y += 35
+                        y += 50
                         isClick.append(texR)
                 #clickable menu items
                 if mouseClicked and isClick[0].collidepoint(event.pos):
