@@ -35,8 +35,6 @@ textures = {
 
 enemyPath = [(0,2), (1,2), (1,16), (3,16), (3,1), (22,1), (22,3), (5,3), (5,16), (8,16)]
 
-def getStart():
-        return 0,2
 
 tilemap = [
                 [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -72,25 +70,13 @@ def drawBoard():
         for row in range(MAPHEIGHT):
                 for column in range(MAPWIDTH):
 
-                        #scale(Surface, (width, height)
-                        #images/textures
                         DISPLAYSURF.blit(textures[tilemap[row][column]], (column*TILESIZE, row*TILESIZE, TILESIZE, TILESIZE))
 
-                        #colours
-##                        if(tilemap[row][column] < 4):
-##                                pygame.draw.rect(DISPLAYSURF, colours[tilemap[row][column]], (column * TILESIZE, row * TILESIZE, TILESIZE, TILESIZE))
-##
-##                        
-##                        elif(tilemap[row][column] > 6):
-##                                pygame.draw.rect(DISPLAYSURF, GREEN, (column * TILESIZE, row * TILESIZE, TILESIZE, TILESIZE))
-##
                                 
 def drawTowers():
         for row in range(MAPHEIGHT):
                 for column in range(MAPWIDTH):
                         if(tilemap[row][column] == 4):
-                                #a.topleft = ((row * 50 + 40), (column * 40 + 40))
-                                #DISPLAYSURF.blit(Bomber, (row, column))
                                 DISPLAYSURF.blit(textures[tilemap[row][column]], (column*TILESIZE, row*TILESIZE, TILESIZE, TILESIZE))
 
 def getEnemyPath():
@@ -110,17 +96,19 @@ while True:
                         pygame.quit()
                         sys.exit()
 
-        getPath()
+                        
+##
+##        #getPath()
 ##
 ##        drawBoard()
 ##
 ##        drawTowers()
 ##
 ##                        
-##
-##                        
-##        
-##
-##        pygame.display.update()
+
+                        
+        
+
+        pygame.display.update()
 
         
