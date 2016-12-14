@@ -3,7 +3,9 @@ import time
 from Tower import *
 from Enemy import *
 from Map import *
+
 pygame.init()
+pygame.font.init()
 
 display_width = 1280
 display_height = 720
