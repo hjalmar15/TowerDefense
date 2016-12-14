@@ -23,8 +23,8 @@ FINISH = 3
 TITLE = 4
 SHOP = 5
 START = 6
-BOMBER = 7
-SHOOTER = 8
+SHOOTER = 7
+BOMBER = 8
 SNIPER = 9
 TOWERS = 10
 WIN = 11
@@ -90,9 +90,12 @@ def drawBoard():
         
         for row in range(MAPHEIGHT):
                 for column in range(MAPWIDTH):
-                        if(tilemap[row][column] < 4 or tilemap[row][column] == 5):
+                        if(tilemap[row][column] < 6):
                                 #draw tilemap as rectangles in certain colors
                                 pygame.draw.rect(DISPLAYSURF, colors[tilemap[row][column]], (column*TILESIZE, row*TILESIZE, TILESIZE, TILESIZE))
+                                #draw towers
+                        if (tilemap[row][column] > 6 and tilemap[row][column] < 10):
+                                DISPLAYSURF.blit(textures[tilemap[row][column]], (column*TILESIZE, row*TILESIZE, TILESIZE, TILESIZE))
 
                         #draw tilemap as images
                         #DISPLAYSURF.blit(textures[tilemap[row][column]], (column*TILESIZE, row*TILESIZE, TILESIZE, TILESIZE))
@@ -101,6 +104,7 @@ def drawTowers():
         for row in range(MAPHEIGHT):
                 for column in range(MAPWIDTH):
                         if(tilemap[row][column] == 7 or tilemap[row][column] == 8 or tilemap[row][column] == 9):
+                                print("Tadsf")
                                 DISPLAYSURF.blit(textures[tilemap[row][column]], (column*TILESIZE, row*TILESIZE, TILESIZE, TILESIZE))
 
 def drawButtons():

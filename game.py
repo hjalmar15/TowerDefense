@@ -141,6 +141,7 @@ def placeTower(tower):
                         x1 = int(x)
                         y1 = int(y)
                         if tilemap[y1][x1] == 1:
+                                print(tower)
                                 tilemap[y1][x1] = tower
                                 runIt = False
         
