@@ -60,7 +60,8 @@ def introMenu():
                                 
                 pygame.display.update()
                 clock.tick(15)
-        
+allSprites = pygame.sprite.Group()
+
 def theGame():
         #Initialize mouse and screen
         pygame.mixer.music.stop()
@@ -77,7 +78,6 @@ def theGame():
 
         red = Red(40)
         
-        allSprites = pygame.sprite.Group()
         allSprites.add(red)
         
         while run:
@@ -141,7 +141,8 @@ def placeTower(tower):
                                 mouseClick = True
                 img = textures[tower]
                 screen.blit(img, (mousex, mousey))
-                pygame.display.flip()
+                allSprites.draw(screen)
+                
                 if mouseClick == True:
                         x, y = getGridAtPixel(int(mousex), int(mousey))
                         x1 = int(x)
@@ -149,6 +150,8 @@ def placeTower(tower):
                         if tilemap[y1][x1] == 1:
                                 tilemap[y1][x1] = tower
                                 runIt = False
+                                
+                pygame.display.flip()
                 clock.tick(30)
         
 def getGridAtPixel(mousex, mousey):
