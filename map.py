@@ -33,7 +33,7 @@ textures = {
 
 #colours = {PATH: GRAY, GRASS: GREEN, START: BLUE, FINISH: RED}
 
-#enemyPath = [(2,0), (2,0), (2,0), (2,0), (2,0)]
+enemyPath = [(0,2), (1,2), (1,16), (3,16), (3,1), (22,1), (22,3), (5,3), (5,16), (8,16)]
 
 
 tilemap = [
@@ -91,6 +91,14 @@ def drawTowers():
                                 #DISPLAYSURF.blit(Bomber, (row, column))
                                 DISPLAYSURF.blit(textures[tilemap[row][column]], (column*TILESIZE, row*TILESIZE, TILESIZE, TILESIZE))
 
+def getEnemyPath():
+        path = []
+        for row in range(MAPHEIGHT):
+                for column in range(MAPWIDTH):
+                        if((tilemap[row][column]) == 0):
+                                
+                                path.append((row, col))
+                        
 
 
 while True:
@@ -99,6 +107,8 @@ while True:
                 if event.type == QUIT:
                         pygame.quit()
                         sys.exit()
+
+        getPath()
 ##
 ##        drawBoard()
 ##
