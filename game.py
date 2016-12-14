@@ -125,7 +125,10 @@ def click(mousex, mousey, level):
         
 def placeTower(tower):
         runIt = True
+        mousex, mousey = 1000,100
         while runIt:
+                drawBoard()
+                drawButtons()
                 mouseClick = False
                 for event in pygame.event.get():
                         if event.type == pygame.QUIT:
@@ -136,14 +139,17 @@ def placeTower(tower):
                         elif event.type == pygame.MOUSEBUTTONUP:
                                 mousex, mousey = event.pos
                                 mouseClick = True
+                img = textures[tower]
+                screen.blit(img, (mousex, mousey))
+                pygame.display.flip()
                 if mouseClick == True:
                         x, y = getGridAtPixel(int(mousex), int(mousey))
                         x1 = int(x)
                         y1 = int(y)
                         if tilemap[y1][x1] == 1:
-                                print(tower)
                                 tilemap[y1][x1] = tower
                                 runIt = False
+                clock.tick(30)
         
 def getGridAtPixel(mousex, mousey):
 	x = (mousex) / 40
