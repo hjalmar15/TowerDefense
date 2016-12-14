@@ -76,7 +76,7 @@ def theGame():
         level = 0
         run = True
 
-        red = Red()
+        red = Red(40)
         
         allSprites = pygame.sprite.Group()
         allSprites.add(red)
