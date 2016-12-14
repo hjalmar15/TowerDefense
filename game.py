@@ -76,7 +76,7 @@ def theGame():
         level = 0
         run = True
 
-        red = Red(40)
+        red = Red(4)
         
         allSprites.add(red)
         
@@ -141,6 +141,7 @@ def placeTower(tower):
                                 mouseClick = True
                 img = textures[tower]
                 screen.blit(img, (mousex, mousey))
+                allSprites.update()
                 allSprites.draw(screen)
                 
                 if mouseClick == True:
