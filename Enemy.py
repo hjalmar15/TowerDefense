@@ -59,30 +59,23 @@ class red(Enemy):
 path = getEnemyPath()
 class Block(pygame.sprite.Sprite):
     count = 1
-    # Constructor. Pass in the color of the block,
-    # and its x and y position
-    def __init__(self, color, width, height):
+    def __init__(self):
        # Call the parent class (Sprite) constructor
        pygame.sprite.Sprite.__init__(self)
        self.count = 1
-       # Create an image of the block, and fill it with a color.
-       # This could also be an image loaded from the disk.
-       self.image = pygame.Surface([width, height])
-       self.image.fill(color)
+       
        x,y = path[0]
        x *= 40
        y *= 40
+       
+       icon = pygame.image.load('Sprites/Red.png')
+       self.image = icon
+       
        # Fetch the rectangle object that has the dimensions of the image
        # Update the position of this object by setting the values of rect.x and rect.y
        self.rect = self.image.get_rect()
        self.rect.x = x
        self.rect.y = y
-    def reset_pos(self):
-        """ Reset position to the top of the screen, at a random x location.
-        Called by update() or the main program loop if there is a collision.
-        """
-        self.rect.y = random.randrange(-300, -20)
-        self.rect.x = random.randrange(0, screen_width)
         
     def update(self):
         """ Called each frame. """
