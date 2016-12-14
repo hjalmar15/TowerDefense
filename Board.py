@@ -79,7 +79,6 @@ tilemap = [
                 [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 5, 5, 5, 5, 5, 5, 5],
         ]
 
-
 #pygame.init()
 
 DISPLAYSURF = pygame.display.set_mode((display_width, display_height))

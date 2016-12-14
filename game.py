@@ -68,7 +68,6 @@ def theGame():
         mousex = 0
         mousey = 0
         selectedTower = None
-        mouseClicked = False
         #Initialize game
         money = 200
         score = 0
@@ -84,7 +83,7 @@ def theGame():
         while run:
                 drawBoard()
                 drawButtons()
-                
+                mouseClicked = False
                 for event in pygame.event.get():
                         if event.type == pygame.QUIT:
                                 pygame.quit()
@@ -125,9 +124,9 @@ def click(mousex, mousey, level):
         
         
 def placeTower(tower):
-        mouseClick = False
         runIt = True
         while runIt:
+                mouseClick = False
                 for event in pygame.event.get():
                         if event.type == pygame.QUIT:
                                 pygame.quit()
@@ -138,7 +137,7 @@ def placeTower(tower):
                                 mousex, mousey = event.pos
                                 mouseClick = True
                 if mouseClick == True:
-                        x, y = getGridAtPixel(mousex, mousey)
+                        x, y = getGridAtPixel(int(mousex), int(mousey))
                         x1 = int(x)
                         y1 = int(y)
                         if tilemap[y1][x1] == 1:
@@ -148,7 +147,7 @@ def placeTower(tower):
 def getGridAtPixel(mousex, mousey):
 	x = (mousex) / 40
 	y = (mousey) / 40
-	if x >= 0 and x <= 25 and y >= 0 and y <= 18:
+	if x >= 0 and x <= 32 and y >= 0 and y <= 18:
 		return x, y
 	
                 
