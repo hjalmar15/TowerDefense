@@ -29,7 +29,6 @@ START = 7
 
 
 
-
 #load images
 textures = {
         PATH: pygame.image.load('Sprites/Mud.png'),
@@ -82,14 +81,6 @@ def drawBoard():
                         #images/textures
                         DISPLAYSURF.blit(textures[tilemap[row][column]], (column*TILESIZE, row*TILESIZE, TILESIZE, TILESIZE))
 
-                        #colours
-##                        if(tilemap[row][column] < 4):
-##                                pygame.draw.rect(DISPLAYSURF, colours[tilemap[row][column]], (column * TILESIZE, row * TILESIZE, TILESIZE, TILESIZE))
-##
-##                        
-##                        elif(tilemap[row][column] > 6):
-##                                pygame.draw.rect(DISPLAYSURF, GREEN, (column * TILESIZE, row * TILESIZE, TILESIZE, TILESIZE))
-##
                                 
 def drawTowers():
         for row in range(MAPHEIGHT):
@@ -107,23 +98,3 @@ def getEnemyPath():
         enemyPath = [(0,2), (1,2), (1,16), (3,16), (3,1), (22,1), (22,3), (5,3), (5,16), (8,16), (8,6), (22,6), (22,16), (20,16), (20,9), (11,9) (11,12), (17,12), (17,15), (11,15), (11,17)]
 
         return enemyPath
-
-##while True:
-##
-##        for event in pygame.event.get():
-##                if event.type == QUIT:
-##                        pygame.quit()
-##                        sys.exit()
-##
-##        drawBoard()
-##
-##        drawTowers()
-##
-##                        
-##
-##                        
-##        
-##
-##        pygame.display.update()
-
-        
