@@ -76,7 +76,7 @@ def theGame():
         
         run = True
 
-        red = Red()
+        red = Red(40)
         
         allSprites = pygame.sprite.Group()
         allSprites.add(red)
@@ -95,7 +95,7 @@ def theGame():
                                 mousex, mousey = event.pos
                                 mouseClicked = True
                 if 1 == 3:
-                        youWin()        
+                        youWin()   
                 allSprites.update()
                 allSprites.draw(screen)
                 pygame.display.flip()

@@ -60,11 +60,12 @@ class red(Enemy):
         
 class Red(pygame.sprite.Sprite):
     count = 1
-    def __init__(self):
+    speed = 1.0
+    def __init__(self, speed):
        # Call the parent class (Sprite) constructor
        pygame.sprite.Sprite.__init__(self)
        self.count = 1
-       
+       self.speed = speed
        x,y = PATH[0]
        x *= 40
        y *= 40
@@ -80,19 +81,23 @@ class Red(pygame.sprite.Sprite):
         
     def update(self):
         """ Called each frame. """
+        if self.rect.x == (PATH[-1][0]*40) and self.rect.y == (PATH[-1][1]*40):
+            self.kill()
+            
         a,b = PATH[self.count]
         #right
-        if self.rect.x < (a*40) and self.rect.y >= (b*40):
-            self.rect.x += 1
+        if self.rect.x < (a*40) and self.rect.y == (b*40):
+            self.rect.x += self.speed
         #down
-        elif self.rect.x >= (a*40) and self.rect.y < (b*40):
-            self.rect.y += 1
-        #up
-        elif self.rect.x > (a*40) and self.rect.y <= (b*40):
-            self.rect.x -= 1
+        elif self.rect.x == (a*40) and self.rect.y < (b*40):
+            self.rect.y += self.speed
         #left
-        elif self.rect.x <= (a*40) and self.rect.y > (b*40):
-            self.rect.y -= 1
+        elif self.rect.x > (a*40) and self.rect.y == (b*40):
+            self.rect.x -= self.speed
+        #up
+        elif self.rect.x == (a*40) and self.rect.y > (b*40):
+            self.rect.y -= self.speed
         else:
-            self.count += 1
+            if self.count+1 < len(PATH):
+                self.count += 1
             a,b = PATH[self.count]
