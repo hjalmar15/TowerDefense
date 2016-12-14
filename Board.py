@@ -28,8 +28,6 @@ TITLE = 6
 START = 7
 
 
-
-
 #load images
 textures = {
         PATH: pygame.image.load('Sprites/Mud.png'),
@@ -41,8 +39,6 @@ textures = {
 
 
 #colours = {PATH: GRAY, GRASS: GREEN, START: BLUE, FINISH: RED}
-
-enemyPath = [(0,2), (1,2), (1,16), (3,16), (3,1), (22,1), (22,3), (5,3), (5,16), (8,16)]
 
 
 tilemap = [
@@ -106,12 +102,19 @@ def drawButtons():
          DISPLAYSURF.blit(textures[7], (1050, 650))
 
 def getEnemyPath():
-        path = []
-        for row in range(MAPHEIGHT):
-                for column in range(MAPWIDTH):
-                        if((tilemap[row][column]) == 0):
-                                
-                                path.append((row, col))
+        
+        enemyPath = [(0,2), (1,2), (1,16), (3,16), (3,1), (22,1), (22,3), (5,3), (5,16), (8,16), (8,6), (22,6), (22,16), (20,16), (20,9), (11,9) (11,12), (17,12), (17,15), (11,15), (11,17)]
+
+        return enemyPath
+
+        
+##        path = []
+##        for row in range(MAPHEIGHT):
+##                for column in range(MAPWIDTH):
+##                        if((tilemap[row][column]) == 0):
+##                                
+##                                path.append((row, col))
+
 
 ##while True:
 ##
