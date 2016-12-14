@@ -35,6 +35,8 @@ colours = {PATH: GRAY, GRASS: GREEN, START: BLUE, FINISH: RED}
 
 #enemyPath = [(2,0), (2,0), (2,0), (2,0), (2,0)]
 
+def getStart():
+        return 0,2
 
 tilemap = [
                 [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],

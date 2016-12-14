@@ -71,10 +71,23 @@ def theGame():
         money = 200
         score = 0
         lives = 5
-        drawBoard()
+        
         run = True
+        x,y = 0,2
+        x *= 40
+        y *= 40
 
+        block = Block(black, 30,30)
+        
+        blockList = pygame.sprite.Group()
+        allSprites = pygame.sprite.Group()
+        block.rect.x = x
+        block.rect.y = y
+        blockList.add(block)
+        allSprites.add(block)
+        
         while run:
+                drawBoard()
                 for event in pygame.event.get():
                         if event.type == pygame.QUIT:
                                 pygame.quit()
@@ -84,6 +97,8 @@ def theGame():
                         elif event.type == pygame.MOUSEBUTTONUP:
                                 mousex, mousey = event.pos
                                 mouseClicked = True
+                allSprites.update()
+                allSprites.draw(screen)
                 pygame.display.flip()
                 clock.tick(30)
                 
