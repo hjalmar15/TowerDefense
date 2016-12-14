@@ -24,8 +24,6 @@ FINISH = 3
 BOMBER = 4
 
 
-
-
 #load images
 textures = {
         PATH: pygame.image.load('Sprites/Mud.png'),
@@ -34,9 +32,6 @@ textures = {
 
 
 #colours = {PATH: GRAY, GRASS: GREEN, START: BLUE, FINISH: RED}
-
-
-enemyPath = [(0,2), (1,2), (1,16), (3,16), (3,1), (22,1), (22,3), (5,3), (5,16), (8,16), (8,6), (22,6), (22,16), (20,16), (20,9), (11,9) (11,12), (17,12), (17,15), (11,15), (11,17)]
 
 
 tilemap = [
@@ -96,6 +91,7 @@ def drawTowers():
                                 DISPLAYSURF.blit(textures[tilemap[row][column]], (column*TILESIZE, row*TILESIZE, TILESIZE, TILESIZE))
 
 def getEnemyPath():
+        
         enemyPath = [(0,2), (1,2), (1,16), (3,16), (3,1), (22,1), (22,3), (5,3), (5,16), (8,16), (8,6), (22,6), (22,16), (20,16), (20,9), (11,9) (11,12), (17,12), (17,15), (11,15), (11,17)]
 
         return enemyPath

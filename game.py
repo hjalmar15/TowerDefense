@@ -35,7 +35,7 @@ def introMenu():
                         elif event.type == pygame.MOUSEBUTTONUP:
                                 mouseClicked = True
                                 
-                font = pygame.font.Font('freesansbold.ttf',30)
+                font = pygame.font.Font('Fonts/freesansbold.ttf',30)
                 x = display_width/2
                 y = display_height/2
                 #isClick = stores location of menu items "rect"
