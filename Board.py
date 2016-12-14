@@ -12,8 +12,8 @@ MAPHEIGHT = 18
 GREY = (180, 171, 171)
 BROWN = (87, 59, 12)
 GREEN = (34, 139, 34)
+RED = (255, 0, 0)
 BLUE = (0, 0, 255)
-RED = (255, 0 , 0)
 
 
 PATH = 0
@@ -28,12 +28,17 @@ SHOOTER = 8
 SNIPER = 9
 TOWERS = 10
 WIN = 11
+SHOOTERSHOP = 12
+BOMBERSHOP = 13
+SNIPERSHOP = 14
 
 
 colors = {
         PATH: BROWN,
         GRASS: GREEN,
         SHOP: GREY,
+        START: BLUE,
+        FINISH: RED,
         }
 
 
@@ -42,11 +47,14 @@ textures = {
         BOMBER: pygame.image.load('Sprites/Bomber.png'),
         SHOOTER: pygame.image.load('Sprites/Shooter.png'),
         SNIPER: pygame.image.load('Sprites/Sniper.png'),
-        SHOP: pygame.image.load('Sprites/Shop.png'),
+        #SHOP: pygame.image.load('Sprites/Shop.png'),
         TITLE: pygame.image.load('Sprites/Title.png'),
         START: pygame.image.load('Sprites/Start.png'),
         TOWERS: pygame.image.load('Sprites/Towers.png'),
-        WIN: pygame.image.load('Sprites/youWin.gif')
+        WIN: pygame.image.load('Sprites/youWin.gif'),
+        SHOOTERSHOP: pygame.image.load('Sprites/ShooterShop.png'),
+        BOMBERSHOP: pygame.image.load('Sprites/BomberShop.png'),
+        SNIPERSHOP: pygame.image.load('Sprites/SniperShop.png'),
         }
 
 
@@ -66,7 +74,7 @@ tilemap = [
                 [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 5, 5, 5, 5, 5, 5, 5],
                 [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 5, 5, 5, 5, 5, 5, 5],
                 [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 5, 5, 5, 5, 5, 5, 5],
-                [1, 0, 7, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 5, 5, 5, 5, 5, 5, 5],
+                [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 5, 5, 5, 5, 5, 5, 5],
                 [1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 5, 5, 5, 5, 5, 5, 5],
                 [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 5, 5, 5, 5, 5, 5, 5],
         ]
@@ -83,7 +91,7 @@ def drawBoard():
         
         for row in range(MAPHEIGHT):
                 for column in range(MAPWIDTH):
-                        if(tilemap[row][column] < 2 or tilemap[row][column] == 5):
+                        if(tilemap[row][column] < 4 or tilemap[row][column] == 5):
                                 #draw tilemap as rectangles in certain colors
                                 pygame.draw.rect(DISPLAYSURF, colors[tilemap[row][column]], (column*TILESIZE, row*TILESIZE, TILESIZE, TILESIZE))
 
@@ -93,21 +101,21 @@ def drawBoard():
 def drawTowers():
         for row in range(MAPHEIGHT):
                 for column in range(MAPWIDTH):
-                        if(tilemap[row][column] == 4):
+                        if(tilemap[row][column] == 7 or tilemap[row][column] == 8 or tilemap[row][column] == 9):
                                 DISPLAYSURF.blit(textures[tilemap[row][column]], (column*TILESIZE, row*TILESIZE, TILESIZE, TILESIZE))
 
 def drawButtons():
          DISPLAYSURF.blit(textures[4], (1050, 20))
          DISPLAYSURF.blit(textures[10], (1050, 70))
-         DISPLAYSURF.blit(textures[7], (1050, 120))
-         DISPLAYSURF.blit(textures[8], (1050, 200))
-         DISPLAYSURF.blit(textures[9], (1050, 280))
+         DISPLAYSURF.blit(textures[13], (1050, 120))
+         DISPLAYSURF.blit(textures[12], (1050, 200))
+         DISPLAYSURF.blit(textures[14], (1050, 280))
          DISPLAYSURF.blit(textures[6], (1050, 650))
          
 
 def getEnemyPath():
         
-        enemyPath = [(0,2), (1,2), (1,16), (3,16), (3,1), (22,1), (22,3), (5,3), (5,16), (8,16), (8,6), (22,6), (22,16), (20,16), (20,9), (11,9), (11,12), (17,12), (17,15), (11,15), (11,17)]
+        enemyPath = [(0,2), (1,2), (1,16), (3,16), (3,1), (22,1), (22,3), (5,3), (5,16), (8,16), (8,6), (22,6), (22,16), (20,16), (20,9), (11,9), (11,12), (17,12), (17,15), (11,15), (11,17), (11,17)]
 
         return enemyPath
 
