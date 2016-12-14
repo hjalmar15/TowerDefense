@@ -1,5 +1,5 @@
 import pygame
-from Map import *
+from Board import *
 class Enemy(object):
     def __init__(self, path, board):
         self.path = path

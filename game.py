@@ -2,7 +2,7 @@ import pygame
 import time
 from Tower import *
 from Enemy import *
-from Map import *
+from Board import *
 
 pygame.init()
 pygame.font.init()
