@@ -22,10 +22,14 @@ PATH = 0
 GRASS = 1
 START = 2
 FINISH = 3
-BOMBER = 4
+TITLE = 4
 SHOP = 5
-TITLE = 6
-START = 7
+START = 6
+BOMBER = 7
+SHOOTER = 8
+SNIPER = 9
+TOWERS = 10
+WIN = 11
 
 
 
@@ -35,9 +39,13 @@ textures = {
         PATH: pygame.image.load('Sprites/Mud.png'),
         GRASS: pygame.image.load('Sprites/Grass.png'),
         BOMBER: pygame.image.load('Sprites/Bomber.png'),
+        SHOOTER: pygame.image.load('Sprites/Shooter.png'),
+        SNIPER: pygame.image.load('Sprites/Sniper.png'),
         SHOP: pygame.image.load('Sprites/Shop.png'),
         TITLE: pygame.image.load('Sprites/Title.png'),
-        START: pygame.image.load('Sprites/Start.png')}
+        START: pygame.image.load('Sprites/Start.png'),
+        TOWERS: pygame.image.load('Sprites/Towers.png'),
+        WIN: pygame.image.load('Sprites/youWin.gif')}
 
 
 #colours = {PATH: GRAY, GRASS: GREEN, START: BLUE, FINISH: RED}
@@ -59,7 +67,7 @@ tilemap = [
                 [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 5, 5, 5, 5, 5, 5, 5],
                 [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 5, 5, 5, 5, 5, 5, 5],
                 [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 5, 5, 5, 5, 5, 5, 5],
-                [1, 0, 4, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 5, 5, 5, 5, 5, 5, 5],
+                [1, 0, 7, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 5, 5, 5, 5, 5, 5, 5],
                 [1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 5, 5, 5, 5, 5, 5, 5],
                 [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 5, 5, 5, 5, 5, 5, 5],
         ]
@@ -100,13 +108,21 @@ def drawTowers():
                                 DISPLAYSURF.blit(textures[tilemap[row][column]], (column*TILESIZE, row*TILESIZE, TILESIZE, TILESIZE))
 
 def drawButtons():
-         DISPLAYSURF.blit(textures[6], (1050, 20))
-         DISPLAYSURF.blit(textures[7], (1050, 650))
+         DISPLAYSURF.blit(textures[4], (1050, 20))
+         DISPLAYSURF.blit(textures[10], (1050, 70))
+         DISPLAYSURF.blit(textures[7], (1050, 120))
+         DISPLAYSURF.blit(textures[8], (1050, 200))
+         DISPLAYSURF.blit(textures[9], (1050, 280))
+         DISPLAYSURF.blit(textures[6], (1050, 650))
+         
 
 def getEnemyPath():
         enemyPath = [(0,2), (1,2), (1,16), (3,16), (3,1), (22,1), (22,3), (5,3), (5,16), (8,16), (8,6), (22,6), (22,16), (20,16), (20,9), (11,9) (11,12), (17,12), (17,15), (11,15), (11,17)]
 
         return enemyPath
+
+def youWin():
+        DISPLAYSURF.blit(textures[11], (350, 220))
 
 ##while True:
 ##

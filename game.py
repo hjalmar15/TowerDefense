@@ -35,7 +35,7 @@ def introMenu():
                         elif event.type == pygame.MOUSEBUTTONUP:
                                 mouseClicked = True
                                 
-                font = pygame.font.Font('Fonts/freesansbold.ttf',30)
+                font = pygame.font.Font('freesansbold.ttf',30)
                 x = display_width/2
                 y = display_height/2
                 #isClick = stores location of menu items "rect"
@@ -91,6 +91,7 @@ def theGame():
         while run:
                 drawBoard()
                 drawButtons()
+                
                 for event in pygame.event.get():
                         if event.type == pygame.QUIT:
                                 pygame.quit()
@@ -100,6 +101,8 @@ def theGame():
                         elif event.type == pygame.MOUSEBUTTONUP:
                                 mousex, mousey = event.pos
                                 mouseClicked = True
+                if 1 == 3:
+                        youWin()        
                 allSprites.update()
                 allSprites.draw(screen)
                 pygame.display.flip()
