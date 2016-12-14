@@ -75,17 +75,10 @@ def theGame():
         lives = 5
         
         run = True
-        x,y = 0,2
-        x *= 40
-        y *= 40
 
         block = Block(black, 30,30)
         
-        blockList = pygame.sprite.Group()
         allSprites = pygame.sprite.Group()
-        block.rect.x = x
-        block.rect.y = y
-        blockList.add(block)
         allSprites.add(block)
         
         while run:

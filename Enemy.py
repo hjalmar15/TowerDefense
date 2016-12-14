@@ -55,37 +55,50 @@ class red(Enemy):
         self.price = 1000
         self.score = 4000
         self.img = '/Sprites/Red.png'
-
-    
+        
+path = getEnemyPath()
 class Block(pygame.sprite.Sprite):
-
+    count = 1
     # Constructor. Pass in the color of the block,
     # and its x and y position
     def __init__(self, color, width, height):
        # Call the parent class (Sprite) constructor
        pygame.sprite.Sprite.__init__(self)
-
+       self.count = 1
        # Create an image of the block, and fill it with a color.
        # This could also be an image loaded from the disk.
        self.image = pygame.Surface([width, height])
        self.image.fill(color)
-
+       x,y = path[0]
+       x *= 40
+       y *= 40
        # Fetch the rectangle object that has the dimensions of the image
        # Update the position of this object by setting the values of rect.x and rect.y
        self.rect = self.image.get_rect()
+       self.rect.x = x
+       self.rect.y = y
     def reset_pos(self):
         """ Reset position to the top of the screen, at a random x location.
         Called by update() or the main program loop if there is a collision.
         """
         self.rect.y = random.randrange(-300, -20)
         self.rect.x = random.randrange(0, screen_width)
- 
+        
     def update(self):
         """ Called each frame. """
- 
-        # Move block down one pixel
-        self.rect.y += 1
- 
-        # If block is too far down, reset to top of screen.
-        if self.rect.y > 410:
-            True #
+        a,b = path[self.count]
+        #right
+        if self.rect.x < (a*40) and self.rect.y >= (b*40):
+            self.rect.x += 1
+        #down
+        elif self.rect.x >= (a*40) and self.rect.y < (b*40):
+            self.rect.y += 1
+        #up
+        elif self.rect.x > (a*40) and self.rect.y <= (b*40):
+            self.rect.x -= 1
+        #left
+        elif self.rect.x <= (a*40) and self.rect.y > (b*40):
+            self.rect.y -= 1
+        else:
+            self.count += 1
+            a,b = path[self.count]
