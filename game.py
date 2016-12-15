@@ -101,7 +101,7 @@ def theGame():
                 if 1 == 3:
                         youWin()
                 if mouseClicked:
-                        whatClicked = click(mousex, mousey, level)
+                        whatClicked = click(mousex, mousey)
                         if whatClicked == 'placeSh':
                                 placeTower(8)
                         if whatClicked == 'placeB':
@@ -109,7 +109,8 @@ def theGame():
                         if whatClicked == 'placeSn':
                                 placeTower(9)
                         if whatClicked == "start":
-                                startWave()
+                                gameStats[1] += 1
+                                startWave(gameStats[1])
                 allSprites.update()
                 allSprites.draw(screen)
                 pygame.display.flip()
@@ -149,7 +150,7 @@ def drawQueue():
                         allSprites.add(creep)
 
 
-def click(mousex, mousey, level):
+def click(mousex, mousey):
         if mousex >= 1050 and mousex <= 1090 and mousey >= 120 and mousey <= 160:
                 return 'placeSh'
         elif mousex >= 1050 and mousex <= 1090 and mousey >= 200 and mousey <= 240:
@@ -161,18 +162,23 @@ def click(mousex, mousey, level):
         else:
                 return None
 
-def startWave():
+def startWave(level):
         # Yellow < Green < Blue < Red
+        if level == 1:
+                queue.append(Yellow(6, 10, 100))
+                queue.append(Yellow(7, 10, 100))
+        elif level == 2:
+                queue.append(Green(8, 10, 100))
+                queue.append(Green(9, 10, 100))
+        elif level == 3:
+                queue.append(Blue(4, 10, 100))
+                queue.append(Blue(5, 10, 100))
+        else:
+                queue.append(Red(1, 10, 100))
+                queue.append(Red(2, 10, 100))
+                queue.append(Red(3, 10, 100))
 
-        queue.append(Red(1, 10, 100))
-        queue.append(Red(2, 10, 100))
-        queue.append(Red(3, 10, 100))
-        queue.append(Blue(4, 10, 100))
-        queue.append(Blue(5, 10, 100))
-        queue.append(Yellow(6, 10, 100))
-        queue.append(Yellow(7, 10, 100))
-        queue.append(Green(8, 10, 100))
-        queue.append(Green(9, 10, 100))
+
         
 def placeTower(tower):
         runIt = True
