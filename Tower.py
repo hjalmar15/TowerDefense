@@ -1,3 +1,6 @@
+import pygame
+from Board import *
+
 class Tower(object):
     def __init__(self, row, col, board):
         self.row = row
@@ -11,37 +14,78 @@ class Tower(object):
         self.pene = 0
         self.img = ''
 
-class shooter(Tower):
-    def __init__(self, row, col, board):
-        super(shooter, self).__init__(self, row, col, board)
+
+
+class Shooter(pygame.sprite.Sprite):
+
+    def __init__(self, row, col):
+        #super(shooter, self).__init__(self, row, col, board)
+        pygame.sprite.Sprite.__init__(self)
+
         self.name = 'Shooter'
         self.attack = 10
         self.speed = 1.0
         self.rang = 10
         self.cost = 100
         self.pene = 1
-        self.img = '/Sprites/Shooter.png'
 
-class bomber(Tower):
-    def __init__(self, row, col, board):
-        super(bomber, self).__init__(self, row, col, board)
+        icon = pygame.image.load('Sprites/Shooter.png')
+        self.image = icon
+
+        row *= 40
+        col *= 40
+
+        self.rect = self.image.get_rect()
+        self.rect.x = col
+        self.rect.y = row
+
+
+
+
+class Bomber(pygame.sprite.Sprite):
+    def __init__(self, row, col):
+        #super(bomber, self).__init__(self, row, col, board)
+        pygame.sprite.Sprite.__init__(self)
+
         self.name = 'Bomber'
         self.attack = 25
         self.speed = 2.0
         self.rang = 15
         self.cost = 150
         self.pene = 2
-        self.img = '/Sprites/Bomber.png'
 
-class sniper(Tower):
-    def __init__(self, row, col, board):
-        super(sniper, self).__init__(self, row, col, board)
+        icon = pygame.image.load('Sprites/Bomber.png')
+        self.image = icon
+
+        row *= 40
+        col *= 40
+
+        self.rect = self.image.get_rect()
+        self.rect.x = col
+        self.rect.y = row
+
+
+class Sniper(pygame.sprite.Sprite):
+    def __init__(self, row, col):
+        #super(sniper, self).__init__(self, row, col, board)
+        pygame.sprite.Sprite.__init__(self)
+
         self.name = 'Sniper'
         self.attack = 20
         self.speed = 3.0
         self.rang = 50
         self.cost = 400
         self.pene = 4
-        self.img = '/Sprites/Sniper.png'
 
-    
+        icon = pygame.image.load('Sprites/Sniper.png')
+        self.image = icon
+
+        row *= 40
+        col *= 40
+
+        self.rect = self.image.get_rect()
+        self.rect.x = col
+        self.rect.y = row
+
+
+

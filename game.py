@@ -17,6 +17,7 @@ red = (255,0,0)
 clock = pygame.time.Clock()
 
 screen = pygame.display.set_mode((display_width, display_height))
+
 def introMenu():
         #list of menu text
         text = ['Play Game', 'Quit']
@@ -108,17 +109,28 @@ def theGame():
                 pygame.display.flip()
                 clock.tick(30)
 
+
+                font = pygame.font.Font('Fonts/freesansbold.ttf',30)
+
+
+                fundDisp = font.render('Funds: %d' % money, 1, black)
+                #funde = fundDisp.get_rect()
+                #fundDisp.topleft = (1050, 400)
+                DISPLAYSURF.blit(fundDisp, (100, 100))
+        
+
+
 def click(mousex, mousey, level):
-	if mousex >= 1050 and mousex <= 1090 and mousey >= 120 and mousey <= 160:
-		return 'placeSh'
-	elif mousex >= 1050 and mousex <= 1090 and mousey >= 200 and mousey <= 240:
-		return 'placeB'
-	elif mousex >= 1050 and mousex <= 1090 and mousey >= 280 and mousey <= 320:
-		return 'placeSn'
-	elif mousex >= 1050 and mousex <= 1230 and mousey >= 650 and mousey <= 710:
-		return 'start'
-	else:
-		return None
+        if mousex >= 1050 and mousex <= 1090 and mousey >= 120 and mousey <= 160:
+                return 'placeSh'
+        elif mousex >= 1050 and mousex <= 1090 and mousey >= 200 and mousey <= 240:
+                return 'placeB'
+        elif mousex >= 1050 and mousex <= 1090 and mousey >= 280 and mousey <= 320:
+                return 'placeSn'
+        elif mousex >= 1050 and mousex <= 1230 and mousey >= 650 and mousey <= 710:
+                return 'start'
+        else:
+                return None
 
 ##def startWave(level):
         
@@ -150,18 +162,32 @@ def placeTower(tower):
                         y1 = int(y)
                         if tilemap[y1][x1] == 1:
                                 tilemap[y1][x1] = tower
+
+                                if(tower == 8):
+                                        shooter = Shooter(y1, x1)
+
+                                        allSprites.add(shooter)
+                                if (tower == 7):
+                                        bomber = Bomber(y1, x1)
+
+                                        allSprites.add(bomber)
+                                if (tower == 9):
+                                        sniper = Sniper(y1, x1)
+
+                                        allSprites.add(sniper)
+
                                 runIt = False
                                 
                 pygame.display.flip()
                 clock.tick(30)
         
 def getGridAtPixel(mousex, mousey):
-	x = (mousex) / 40
-	y = (mousey) / 40
-	if x >= 0 and x <= 32 and y >= 0 and y <= 18:
-		return x, y
-	
-                
+        x = (mousex) / 40
+        y = (mousey) / 40
+        if x >= 0 and x <= 32 and y >= 0 and y <= 18:
+                return x, y
+
+
 introMenu()
 pygame.quit()
 quit()
