@@ -150,7 +150,7 @@ def theGame():
         allEnemies.update()
         allEnemies.draw(screen)
         allBullets.update()
-        allBullets(screen)
+        allBullets.draw(screen)
         towers.update()
         pygame.display.flip()
         clock.tick(60)

@@ -3,7 +3,6 @@ from Board import *
 PATH = getEnemyPath()
 # Yellow < Green < Blue < Red
 
-allEnemies = pygame.sprite.Group()
 
 class Yellow(pygame.sprite.Sprite):
     def __init__(self, speed, health, reward):
@@ -33,6 +32,7 @@ class Yellow(pygame.sprite.Sprite):
         if self.rect.x == (PATH[-1][0] * 40) and self.rect.y == (PATH[-1][1] * 40):
             gameStats[2] -= 1
             self.kill()
+            self.remove()
         a, b = PATH[self.count]
         # right
         if self.rect.x < (a * 40) and self.rect.y == (b * 40):
@@ -64,7 +64,10 @@ class Yellow(pygame.sprite.Sprite):
             a, b = PATH[self.count]
         for x in allBullets:
             if pygame.sprite.collide_rect(x, self):
+                x.kill()
+                x.remove()
                 self.kill()
+                self.remove()
 
 class Green(pygame.sprite.Sprite):
     def __init__(self, speed, health, reward):
@@ -94,6 +97,7 @@ class Green(pygame.sprite.Sprite):
         if self.rect.x == (PATH[-1][0] * 40) and self.rect.y == (PATH[-1][1] * 40):
             gameStats[2] -= 1
             self.kill()
+            self.remove()
         a, b = PATH[self.count]
         # right
         if self.rect.x < (a * 40) and self.rect.y == (b * 40):
@@ -125,7 +129,10 @@ class Green(pygame.sprite.Sprite):
             a, b = PATH[self.count]
         for x in allBullets:
             if pygame.sprite.collide_rect(x, self):
+                x.kill()
+                x.remove()
                 self.kill()
+                self.remove()
 
 
 class Blue(pygame.sprite.Sprite):
@@ -156,6 +163,7 @@ class Blue(pygame.sprite.Sprite):
         if self.rect.x == (PATH[-1][0] * 40) and self.rect.y == (PATH[-1][1] * 40):
             gameStats[2] -= 1
             self.kill()
+            self.remove()
         a, b = PATH[self.count]
         # right
         if self.rect.x < (a * 40) and self.rect.y == (b * 40):
@@ -188,7 +196,10 @@ class Blue(pygame.sprite.Sprite):
 
         for x in allBullets:
             if pygame.sprite.collide_rect(x, self):
+                x.kill()
+                x.remove()
                 self.kill()
+                self.remove()
 
 class Red(pygame.sprite.Sprite):
     def __init__(self, speed, health, reward):
@@ -218,6 +229,7 @@ class Red(pygame.sprite.Sprite):
         if self.rect.x == (PATH[-1][0]*40) and self.rect.y == (PATH[-1][1]*40):
             gameStats[2] -= 1
             self.kill()
+            self.remove()
         a,b = PATH[self.count]
         #right
         if self.rect.x < (a*40) and self.rect.y == (b*40):
@@ -249,4 +261,7 @@ class Red(pygame.sprite.Sprite):
             a,b = PATH[self.count]
         for x in allBullets:
             if pygame.sprite.collide_rect(x, self):
+                x.kill()
+                x.remove()
                 self.kill()
+                self.remove()
