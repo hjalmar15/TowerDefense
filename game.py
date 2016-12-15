@@ -127,6 +127,8 @@ def theGame():
 
         allEnemies.update()
         allEnemies.draw(screen)
+        allBullets.update()
+        allBullets.draw(screen)
         towers.update()
         pygame.display.flip()
         clock.tick(60)
@@ -329,6 +331,8 @@ def placeTower(tower, gameStats):
         allEnemies.draw(screen)
         towers.update()
         towers.draw(screen)
+        allBullets.update()
+        allBullets.draw(screen)
 
         if mouseClick == True:
             x, y = getGridAtPixel(int(mousex), int(mousey))
