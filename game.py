@@ -268,8 +268,6 @@ def getGridAtPixel(mousex, mousey):
 def youWin():
         DISPLAYSURF.blit(textures[11], (350, 220))
         runWin = True
-        allSprites.update()
-        allSprites.draw(screen)
         pygame.display.flip()
         while runWin:
                 for event in pygame.event.get():
@@ -277,14 +275,12 @@ def youWin():
                                 pygame.quit()
                                 quit()
                         elif event.type == MOUSEBUTTONUP:
-                                introMenu()
-                                runWin = False
+                                pygame.quit()
+                                quit()
 
 def gameOver():
         screen.blit(textures[15], (350, 220))
         runDefeat = True
-        allSprites.update()
-        allSprites.draw(screen)
         pygame.display.flip()
         while runDefeat:
                 for event in pygame.event.get():
@@ -292,8 +288,8 @@ def gameOver():
                                 pygame.quit()
                                 quit()
                         elif event.type == MOUSEBUTTONUP:
-                                introMenu()
-                                runDefeat = False
+                                pygame.quit()
+                                quit()
 introMenu()
 pygame.quit()
 quit()
