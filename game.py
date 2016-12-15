@@ -121,7 +121,6 @@ def theGame():
                                 placeTower(9, gameStats)
                         if whatClicked == "start":
                                 gameStats[1] += 1
-                                gameStats[2] -= 1
                                 startWave(gameStats[1])
 
                 if gameStats[2] == 0:
