@@ -23,11 +23,6 @@ towers = pygame.sprite.Group()
 
 font = pygame.font.Font('Fonts/freesansbold.ttf',30)
 
-initMoney = 300
-initScore = 0
-initLives = 5
-initLevel = 0
-
 start = Red(0,0,0)
 
 prev = []
@@ -83,7 +78,6 @@ def theGame():
         mousey = 0
         selectedTower = None
         #Initialize game
-        gameStats = [initMoney, initLevel, initLives, initScore]
         run = True
         while run:
                 drawBoard()

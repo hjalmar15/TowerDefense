@@ -31,6 +31,7 @@ class Yellow(pygame.sprite.Sprite):
     def update(self):
         """ Called each frame. """
         if self.rect.x == (PATH[-1][0] * 40) and self.rect.y == (PATH[-1][1] * 40):
+            gameStats[2] -= 1
             self.kill()
         a, b = PATH[self.count]
         # right
@@ -88,6 +89,7 @@ class Green(pygame.sprite.Sprite):
     def update(self):
         """ Called each frame. """
         if self.rect.x == (PATH[-1][0] * 40) and self.rect.y == (PATH[-1][1] * 40):
+            gameStats[2] -= 1
             self.kill()
         a, b = PATH[self.count]
         # right
@@ -146,6 +148,7 @@ class Blue(pygame.sprite.Sprite):
     def update(self):
         """ Called each frame. """
         if self.rect.x == (PATH[-1][0] * 40) and self.rect.y == (PATH[-1][1] * 40):
+            gameStats[2] -= 1
             self.kill()
         a, b = PATH[self.count]
         # right
@@ -203,6 +206,7 @@ class Red(pygame.sprite.Sprite):
     def update(self):
         """ Called each frame. """
         if self.rect.x == (PATH[-1][0]*40) and self.rect.y == (PATH[-1][1]*40):
+            gameStats[2] -= 1
             self.kill()
         a,b = PATH[self.count]
         #right

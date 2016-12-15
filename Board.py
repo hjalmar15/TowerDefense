@@ -2,6 +2,13 @@ import pygame, sys
 from pygame.locals import *
 
 
+initMoney = 300
+initScore = 0
+initLives = 5
+initLevel = 0
+
+gameStats = [initMoney, initLevel, initLives, initScore]
+
 display_width = 1280
 display_height = 720
 
