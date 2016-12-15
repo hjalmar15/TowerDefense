@@ -113,11 +113,33 @@ def theGame():
         if mouseClicked:
             whatClicked = click(mousex, mousey)
             if whatClicked == 'placeSh':
-                placeTower(8, gameStats)
+                shooter = Shooter(1050, 200)
+                if gameStats[0] >= shooter.cost:
+                        placeTower(8, gameStats)
+                else:
+                        monDisp = fontMin.render('Not enough money', 1, black)
+                        monRect = monDisp.get_rect()
+                        monRect.topleft = (1075, 500)
+                        DISPLAYSURF.blit(monDisp, monRect)
+
             if whatClicked == 'placeB':
-                placeTower(7, gameStats)
+                bomber = Bomber(1050, 120)
+                if gameStats[0] >= bomber.cost:
+                        placeTower(7, gameStats)
+                else:
+                        monDisp = fontMin.render('Not enough money', 1, black)
+                        monRect = monDisp.get_rect()
+                        monRect.topleft = (1075, 500)
+                        DISPLAYSURF.blit(monDisp, monRect)
             if whatClicked == 'placeSn':
-                placeTower(9, gameStats)
+                sniper = Sniper(1050, 280)
+                if gameStats[0] >= sniper.cost:
+                        placeTower(9, gameStats)
+                else:
+                        monDisp = fontMin.render('Not enough money', 1, black)
+                        monRect = monDisp.get_rect()
+                        monRect.topleft = (1075, 500)
+                        DISPLAYSURF.blit(monDisp, monRect)
             if whatClicked == "start" and gameStats[1] < 10:
                 gameStats[1] += 1
                 startWave(gameStats[1])
@@ -127,6 +149,8 @@ def theGame():
 
         allEnemies.update()
         allEnemies.draw(screen)
+        allBullets.update()
+        allBullets(screen)
         towers.update()
         pygame.display.flip()
         clock.tick(60)
@@ -329,6 +353,8 @@ def placeTower(tower, gameStats):
         allEnemies.draw(screen)
         towers.update()
         towers.draw(screen)
+        allBullets.update()
+        allBullets.draw(screen)
 
         if mouseClick == True:
             x, y = getGridAtPixel(int(mousex), int(mousey))
@@ -338,24 +364,16 @@ def placeTower(tower, gameStats):
 
                 if (tower == 7):
                     shooter = Shooter(y1, x1)
-                    if gameStats[0] - shooter.cost < 0:
-                        break
-                    shooter = Shooter(y1, x1)
                     gameStats[0] -= shooter.cost
 
                     towers.add(shooter)
                 if (tower == 8):
-                    bomber = Bomber(y1, x1)
-                    if gameStats[0] - bomber.cost < 0:
-                        break
                     bomber = Bomber(y1, x1)
                     gameStats[0] -= bomber.cost
 
                     towers.add(bomber)
                 if (tower == 9):
                     sniper = Sniper(y1, x1)
-                    if gameStats[0] - sniper.cost < 0:
-                        break
                     gameStats[0] -= sniper.cost
 
                     towers.add(sniper)
