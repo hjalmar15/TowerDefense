@@ -18,6 +18,11 @@ clock = pygame.time.Clock()
 
 screen = pygame.display.set_mode((display_width, display_height))
 
+
+allSprites = pygame.sprite.Group()
+towers = pygame.sprite.Group()
+
+
 font = pygame.font.Font('Fonts/freesansbold.ttf',30)
 
 initMoney = 300
@@ -25,8 +30,8 @@ initScore = 0
 initLives = 5
 initLevel = 0
 
-allSprites = pygame.sprite.Group()
 start = Red(0,0,0)
+
 prev = []
 queue = []
 
@@ -47,7 +52,6 @@ def introMenu():
                                 quit()
                         elif event.type == pygame.MOUSEBUTTONUP:
                                 mouseClicked = True
-                                
 
                 x = display_width/2
                 y = display_height/3
@@ -113,6 +117,8 @@ def theGame():
                                 startWave(gameStats[1])
                 allSprites.update()
                 allSprites.draw(screen)
+                #towers.update()
+                #towers.draw(screen)
                 pygame.display.flip()
                 clock.tick(30)
 
@@ -138,6 +144,7 @@ def drawStats(gameStats):
         scoreRect = scoreDisp.get_rect()
         scoreRect.topleft = (450, 0)
         DISPLAYSURF.blit(scoreDisp, scoreRect)
+
 def drawQueue():
         if len(queue) > 0:
                 if len(prev) == 0:
@@ -221,17 +228,17 @@ def placeTower(tower, gameStats):
                                         shooter = Shooter(y1, x1)
                                         gameStats[0] -= shooter.cost
 
-                                        allSprites.add(shooter)
+                                        towers.add(shooter)
                                 if (tower == 8):
                                         bomber = Bomber(y1, x1)
                                         gameStats[0] -= bomber.cost
 
-                                        allSprites.add(bomber)
+                                        towers.add(bomber)
                                 if (tower == 9):
                                         sniper = Sniper(y1, x1)
                                         gameStats[0] -= sniper.cost
 
-                                        allSprites.add(sniper)
+                                        towers.add(sniper)
 
                                 runIt = False
                                 
