@@ -105,11 +105,11 @@ def theGame():
                 if mouseClicked:
                         whatClicked = click(mousex, mousey)
                         if whatClicked == 'placeSh':
-                                placeTower(8)
+                                placeTower(8, gameStats)
                         if whatClicked == 'placeB':
-                                placeTower(7)
+                                placeTower(7, gameStats)
                         if whatClicked == 'placeSn':
-                                placeTower(9)
+                                placeTower(9, gameStats)
                         if whatClicked == "start":
                                 gameStats[1] += 1
                                 startWave(gameStats[1])
@@ -185,7 +185,7 @@ def startWave(level):
 
 
         
-def placeTower(tower):
+def placeTower(tower, gameStats):
         runIt = True
 
         if tower == 7:
@@ -199,6 +199,7 @@ def placeTower(tower):
         while runIt:
                 drawBoard()
                 drawButtons()
+                drawStats(gameStats)
                 mouseClick = False
                 for event in pygame.event.get():
                         if event.type == pygame.QUIT:
@@ -225,14 +226,17 @@ def placeTower(tower):
 
                                 if(tower == 7):
                                         shooter = Shooter(y1, x1)
+                                        gameStats[0] -= shooter.cost
 
                                         towers.add(shooter)
                                 if (tower == 8):
                                         bomber = Bomber(y1, x1)
+                                        gameStats[0] -= bomber.cost
 
                                         towers.add(bomber)
                                 if (tower == 9):
                                         sniper = Sniper(y1, x1)
+                                        gameStats[0] -= sniper.cost
 
                                         towers.add(sniper)
 
