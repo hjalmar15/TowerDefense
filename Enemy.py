@@ -2,6 +2,9 @@ import pygame
 from Board import *
 PATH = getEnemyPath()
 # Yellow < Green < Blue < Red
+
+allEnemies = pygame.sprite.Group()
+
 class Yellow(pygame.sprite.Sprite):
     def __init__(self, speed, health, reward):
         # Call the parent class (Sprite) constructor
