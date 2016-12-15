@@ -57,15 +57,152 @@ class red(Enemy):
         self.score = 4000
         self.img = '/Sprites/Red.png'
 
-        
-class Red(pygame.sprite.Sprite):
+
+class Green(pygame.sprite.Sprite):
     count = 1
     speed = 1.0
     def __init__(self, speed):
+        # Call the parent class (Sprite) constructor
+        pygame.sprite.Sprite.__init__(self)
+        self.count = 1
+        self.speed = speed
+        x, y = PATH[0]
+        x *= 40
+        y *= 40
+
+        icon = pygame.image.load('Sprites/Red.png')
+        self.image = icon
+
+        # Fetch the rectangle object that has the dimensions of the image
+        # Update the position of this object by setting the values of rect.x and rect.y
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+
+    def update(self):
+        """ Called each frame. """
+        if self.rect.x == (PATH[-1][0] * 40) and self.rect.y == (PATH[-1][1] * 40):
+            self.kill()
+
+        a, b = PATH[self.count]
+        # right
+        if self.rect.x < (a * 40) and self.rect.y == (b * 40):
+            self.rect.x += self.speed
+        # down
+        elif self.rect.x == (a * 40) and self.rect.y < (b * 40):
+            self.rect.y += self.speed
+        # left
+        elif self.rect.x > (a * 40) and self.rect.y == (b * 40):
+            self.rect.x -= self.speed
+        # up
+        elif self.rect.x == (a * 40) and self.rect.y > (b * 40):
+            self.rect.y -= self.speed
+        else:
+            if self.count + 1 < len(PATH):
+                self.count += 1
+            a, b = PATH[self.count]
+
+
+class Blue(pygame.sprite.Sprite):
+    count = 1
+    speed = 1.0
+
+    def __init__(self, speed):
+        # Call the parent class (Sprite) constructor
+        pygame.sprite.Sprite.__init__(self)
+        self.count = 1
+        self.speed = speed
+        x, y = PATH[0]
+        x *= 40
+        y *= 40
+
+        icon = pygame.image.load('Sprites/Red.png')
+        self.image = icon
+
+        # Fetch the rectangle object that has the dimensions of the image
+        # Update the position of this object by setting the values of rect.x and rect.y
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+
+    def update(self):
+        """ Called each frame. """
+        if self.rect.x == (PATH[-1][0] * 40) and self.rect.y == (PATH[-1][1] * 40):
+            self.kill()
+
+        a, b = PATH[self.count]
+        # right
+        if self.rect.x < (a * 40) and self.rect.y == (b * 40):
+            self.rect.x += self.speed
+        # down
+        elif self.rect.x == (a * 40) and self.rect.y < (b * 40):
+            self.rect.y += self.speed
+        # left
+        elif self.rect.x > (a * 40) and self.rect.y == (b * 40):
+            self.rect.x -= self.speed
+        # up
+        elif self.rect.x == (a * 40) and self.rect.y > (b * 40):
+            self.rect.y -= self.speed
+        else:
+            if self.count + 1 < len(PATH):
+                self.count += 1
+            a, b = PATH[self.count]
+
+
+class Green(pygame.sprite.Sprite):
+    count = 1
+    speed = 1.0
+
+    def __init__(self, speed):
+        # Call the parent class (Sprite) constructor
+        pygame.sprite.Sprite.__init__(self)
+        self.count = 1
+        self.speed = speed
+        x, y = PATH[0]
+        x *= 40
+        y *= 40
+
+        icon = pygame.image.load('Sprites/Red.png')
+        self.image = icon
+
+        # Fetch the rectangle object that has the dimensions of the image
+        # Update the position of this object by setting the values of rect.x and rect.y
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+
+    def update(self):
+        """ Called each frame. """
+        if self.rect.x == (PATH[-1][0] * 40) and self.rect.y == (PATH[-1][1] * 40):
+            self.kill()
+
+        a, b = PATH[self.count]
+        # right
+        if self.rect.x < (a * 40) and self.rect.y == (b * 40):
+            self.rect.x += self.speed
+        # down
+        elif self.rect.x == (a * 40) and self.rect.y < (b * 40):
+            self.rect.y += self.speed
+        # left
+        elif self.rect.x > (a * 40) and self.rect.y == (b * 40):
+            self.rect.x -= self.speed
+        # up
+        elif self.rect.x == (a * 40) and self.rect.y > (b * 40):
+            self.rect.y -= self.speed
+        else:
+            if self.count + 1 < len(PATH):
+                self.count += 1
+            a, b = PATH[self.count]
+
+
+class Red(pygame.sprite.Sprite):
+    def __init__(self, speed, health, reward):
        # Call the parent class (Sprite) constructor
        pygame.sprite.Sprite.__init__(self)
        self.count = 1
        self.speed = speed
+       self.health = health
+       self.reward = reward
        x,y = PATH[0]
        x *= 40
        y *= 40
@@ -87,16 +224,28 @@ class Red(pygame.sprite.Sprite):
         a,b = PATH[self.count]
         #right
         if self.rect.x < (a*40) and self.rect.y == (b*40):
-            self.rect.x += self.speed
+            if (self.rect.x + self.speed) > (a*40):
+                self.rect.x = (a*40)
+            else:
+                self.rect.x += self.speed
         #down
         elif self.rect.x == (a*40) and self.rect.y < (b*40):
-            self.rect.y += self.speed
+            if (self.rect.y + self.speed) > (b*40):
+                self.rect.y = (b*40)
+            else:
+                self.rect.y += self.speed
         #left
         elif self.rect.x > (a*40) and self.rect.y == (b*40):
-            self.rect.x -= self.speed
+            if (self.rect.x - self.speed) < (a*40):
+                self.rect.x = (a*40)
+            else:
+                self.rect.x -= self.speed
         #up
         elif self.rect.x == (a*40) and self.rect.y > (b*40):
-            self.rect.y -= self.speed
+            if (self.rect.y - self.speed) < (b*40):
+                self.rect.y = (b*40)
+            else:
+                self.rect.y -= self.speed
         else:
             if self.count+1 < len(PATH):
                 self.count += 1

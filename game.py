@@ -19,7 +19,7 @@ clock = pygame.time.Clock()
 screen = pygame.display.set_mode((display_width, display_height))
 
 allSprites = pygame.sprite.Group()
-start = Red(0)
+start = Red(0,0,0)
 prev = []
 queue = []
 
@@ -134,9 +134,15 @@ def click(mousex, mousey, level):
                 return None
 
 def startWave():
-        queue.append(Red(2))
-        queue.append(Red(2))
-        queue.append(Red(2))
+        queue.append(Red(1, 10, 100))
+        queue.append(Red(2, 10, 100))
+        queue.append(Red(3, 10, 100))
+        queue.append(Red(4, 10, 100))
+        queue.append(Red(5, 10, 100))
+        queue.append(Red(6, 10, 100))
+        queue.append(Red(7, 10, 100))
+        queue.append(Red(8, 10, 100))
+        queue.append(Red(9, 10, 100))
         
 def placeTower(tower):
         runIt = True
