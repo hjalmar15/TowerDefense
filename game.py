@@ -142,6 +142,7 @@ def theGame():
                         DISPLAYSURF.blit(monDisp, monRect)
             if whatClicked == "start" and gameStats[1] < 10:
                 gameStats[1] += 1
+                gameStats[0] += 100
                 startWave(gameStats[1])
 
         if gameStats[2] == 0:

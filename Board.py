@@ -24,7 +24,6 @@ GREEN = (34, 139, 34)
 RED = (255, 0, 0)
 BLUE = (0, 0, 255)
 
-
 PATH = 0
 GRASS = 1
 START = 2
@@ -42,7 +41,6 @@ BOMBERSHOP = 13
 SNIPERSHOP = 14
 GAMEOVER = 15
 
-
 colors = {
         PATH: BROWN,
         GRASS: GREEN,
@@ -50,7 +48,6 @@ colors = {
         START: BLUE,
         FINISH: RED,
         }
-
 
 #load images
 textures = {
@@ -67,7 +64,6 @@ textures = {
         SNIPERSHOP: pygame.image.load('Sprites/SniperShop.png'),
         GAMEOVER: pygame.image.load('Sprites/GameOver.png')
         }
-
 
 tilemap = [
                 [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 5, 5, 5, 5, 5, 5, 5],
@@ -90,10 +86,7 @@ tilemap = [
                 [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 5, 5, 5, 5, 5, 5, 5],
         ]
 
-#pygame.init()
-
 DISPLAYSURF = pygame.display.set_mode((display_width, display_height))
-
 
 def drawBoard():
 
@@ -110,13 +103,6 @@ def drawBoard():
 
                         #draw tilemap as images
                         #DISPLAYSURF.blit(textures[tilemap[row][column]], (column*TILESIZE, row*TILESIZE, TILESIZE, TILESIZE))
-                                
-def drawTowers():
-        for row in range(MAPHEIGHT):
-                for column in range(MAPWIDTH):
-                        if(tilemap[row][column] == 7 or tilemap[row][column] == 8 or tilemap[row][column] == 9):
-                                print("Tadsf")
-                                DISPLAYSURF.blit(textures[tilemap[row][column]], (column*TILESIZE, row*TILESIZE, TILESIZE, TILESIZE))
 
 def drawButtons():
          DISPLAYSURF.blit(textures[4], (1050, 20))
@@ -125,7 +111,6 @@ def drawButtons():
          DISPLAYSURF.blit(textures[12], (1050, 200))
          DISPLAYSURF.blit(textures[14], (1050, 280))
          DISPLAYSURF.blit(textures[6], (1050, 650))
-         
 
 def getEnemyPath():
         
