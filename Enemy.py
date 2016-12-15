@@ -64,12 +64,18 @@ class Yellow(pygame.sprite.Sprite):
             a, b = PATH[self.count]
         for x in allBullets:
             if pygame.sprite.collide_rect(x, self):
-                gameStats[0] += self.reward
-                gameStats[3] += self.maxHealth
-                x.kill()
-                x.remove()
-                self.kill()
-                self.remove()
+                if(self.health - x.attack > 0):
+                    self.health -= x.attack
+                    x.kill()
+                    x.remove()
+                elif(self.health - x.attack <= 0):
+                    x.kill()
+                    x.remove()
+                    self.kill()
+                    self.remove()
+                    gameStats[0] += self.reward
+                    gameStats[3] += self.maxHealth
+
 
 class Green(pygame.sprite.Sprite):
     def __init__(self, speed, health, reward):
@@ -131,12 +137,17 @@ class Green(pygame.sprite.Sprite):
             a, b = PATH[self.count]
         for x in allBullets:
             if pygame.sprite.collide_rect(x, self):
-                gameStats[0] += self.reward
-                gameStats[3] += self.maxHealth
-                x.kill()
-                x.remove()
-                self.kill()
-                self.remove()
+                if(self.health - x.attack > 0):
+                    self.health -= x.attack
+                    x.kill()
+                    x.remove()
+                elif(self.health - x.attack <= 0):
+                    x.kill()
+                    x.remove()
+                    self.kill()
+                    self.remove()
+                    gameStats[0] += self.reward
+                    gameStats[3] += self.maxHealth
 
 
 class Blue(pygame.sprite.Sprite):
@@ -200,12 +211,17 @@ class Blue(pygame.sprite.Sprite):
 
         for x in allBullets:
             if pygame.sprite.collide_rect(x, self):
-                gameStats[0] += self.reward
-                gameStats[3] += self.maxHealth
-                x.kill()
-                x.remove()
-                self.kill()
-                self.remove()
+                if(self.health - x.attack > 0):
+                    self.health -= x.attack
+                    x.kill()
+                    x.remove()
+                elif(self.health - x.attack <= 0):
+                    x.kill()
+                    x.remove()
+                    self.kill()
+                    self.remove()
+                    gameStats[0] += self.reward
+                    gameStats[3] += self.maxHealth
 
 class Red(pygame.sprite.Sprite):
     def __init__(self, speed, health, reward):
@@ -267,9 +283,14 @@ class Red(pygame.sprite.Sprite):
             a,b = PATH[self.count]
         for x in allBullets:
             if pygame.sprite.collide_rect(x, self):
-                gameStats[0] += self.reward
-                gameStats[3] += self.maxHealth
-                x.kill()
-                x.remove()
-                self.kill()
-                self.remove()
+                if(self.health - x.attack > 0):
+                    self.health -= x.attack
+                    x.kill()
+                    x.remove()
+                elif(self.health - x.attack <= 0):
+                    x.kill()
+                    x.remove()
+                    self.kill()
+                    self.remove()
+                    gameStats[0] += self.reward
+                    gameStats[3] += self.maxHealth
