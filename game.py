@@ -18,6 +18,12 @@ clock = pygame.time.Clock()
 
 screen = pygame.display.set_mode((display_width, display_height))
 
+
+allSprites = pygame.sprite.Group()
+start = Red(0)
+prev = []
+queue = []
+
 def introMenu():
         #list of menu text
         text = ['Play Game', 'Quit']
@@ -61,8 +67,6 @@ def introMenu():
                                 
                 pygame.display.update()
                 clock.tick(15)
-allSprites = pygame.sprite.Group()
-
 def theGame():
         #Initialize mouse and screen
         pygame.mixer.music.stop()
@@ -76,14 +80,10 @@ def theGame():
         lives = 5
         level = 0
         run = True
-
-        red = Red(4)
-        
-        allSprites.add(red)
-        
         while run:
                 drawBoard()
                 drawButtons()
+                drawQueue()
                 mouseClicked = False
                 for event in pygame.event.get():
                         if event.type == pygame.QUIT:
@@ -104,10 +104,13 @@ def theGame():
                                 placeTower(7)
                         if whatClicked == 'placeSn':
                                 placeTower(9)
+                        if whatClicked == "start":
+                                startWave()
                 allSprites.update()
                 allSprites.draw(screen)
                 pygame.display.flip()
                 clock.tick(30)
+
 
 
                 font = pygame.font.Font('Fonts/freesansbold.ttf',30)
@@ -118,6 +121,18 @@ def theGame():
                 #fundDisp.topleft = (1050, 400)
                 DISPLAYSURF.blit(fundDisp, (100, 100))
         
+
+
+def drawQueue():
+        if len(queue) > 0:
+                if len(prev) == 0:
+                        creep = queue.pop()
+                        prev.append(creep)
+                        allSprites.add(creep)
+                elif not pygame.sprite.collide_rect(start, prev[0]):
+                        creep = queue.pop()
+                        prev[0] = (creep)
+                        allSprites.add(creep)
 
 
 def click(mousex, mousey, level):
@@ -132,8 +147,10 @@ def click(mousex, mousey, level):
         else:
                 return None
 
-##def startWave(level):
-        
+def startWave():
+        queue.append(Red(2))
+        queue.append(Red(2))
+        queue.append(Red(2))
         
 def placeTower(tower):
         runIt = True
@@ -152,7 +169,7 @@ def placeTower(tower):
                                 mousex, mousey = event.pos
                                 mouseClick = True
                 img = textures[tower]
-                screen.blit(img, (mousex, mousey))
+                screen.blit(img, (mousex-20, mousey-20))
                 allSprites.update()
                 allSprites.draw(screen)
                 
@@ -163,11 +180,11 @@ def placeTower(tower):
                         if tilemap[y1][x1] == 1:
                                 tilemap[y1][x1] = tower
 
-                                if(tower == 8):
+                                if(tower == 7):
                                         shooter = Shooter(y1, x1)
 
                                         allSprites.add(shooter)
-                                if (tower == 7):
+                                if (tower == 8):
                                         bomber = Bomber(y1, x1)
 
                                         allSprites.add(bomber)
@@ -186,7 +203,6 @@ def getGridAtPixel(mousex, mousey):
         y = (mousey) / 40
         if x >= 0 and x <= 32 and y >= 0 and y <= 18:
                 return x, y
-
 
 introMenu()
 pygame.quit()

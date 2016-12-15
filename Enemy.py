@@ -58,7 +58,7 @@ class red(Enemy):
         self.img = '/Sprites/Red.png'
 
         
-class Red(pygame.sprite.Sprite)
+class Red(pygame.sprite.Sprite):
     count = 1
     speed = 1.0
     def __init__(self, speed):
