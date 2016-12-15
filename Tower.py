@@ -30,6 +30,7 @@ class Shooter(pygame.sprite.Sprite):
         self.rang = 160
         self.cost = 100
         self.pene = 1
+        self.time = pygame.time.get_ticks() - 1500
 
         s = pygame.Surface((self.rang,self.rang))
         s.set_alpha(10)
@@ -45,12 +46,14 @@ class Shooter(pygame.sprite.Sprite):
         self.rect.x -= self.rang / 2 - 20
         self.rect.y -= self.rang / 2 - 20
 
-
     def update(self):
-        for s in allEnemies:
-            if(checkCollision(self, s)):
-                #startX, startY, targetX, targetY, attack, range, speed, penet
-                allBullets.add(Bullet(self.rect.x + self.rang / 2 - 20, self.rect.y + self.rang / 2 - 20, s.rect.x, s.rect.y, self.attack, self.rang, self.bSpeed, self.pene))
+        if pygame.time.get_ticks() - self.time > 1500:
+            self.time = pygame.time.get_ticks()
+            for s in allEnemies:
+                if(checkCollision(self, s)):
+                    #startX, startY, targetX, targetY, attack, range, speed, penet
+                    allBullets.add(Bullet(self.rect.x + self.rang / 2 - 20, self.rect.y + self.rang / 2 - 20, s.rect.x, s.rect.y, self.attack, self.rang, self.bSpeed, self.pene))
+                    break
 
 class Bomber(pygame.sprite.Sprite):
     def __init__(self, row, col):
@@ -63,6 +66,7 @@ class Bomber(pygame.sprite.Sprite):
         self.rang = 160
         self.cost = 150
         self.pene = 2
+        self.time = pygame.time.get_ticks() - 1500
 
         s = pygame.Surface((self.rang,self.rang))
         s.set_alpha(10)
@@ -81,9 +85,13 @@ class Bomber(pygame.sprite.Sprite):
 
 
     def update(self):
-        for s in allEnemies:
-            if(checkCollision(self, s)):
-                print('In range')
+        if pygame.time.get_ticks() - self.time > 1500:
+            self.time = pygame.time.get_ticks()
+            for s in allEnemies:
+                if(checkCollision(self, s)):
+                    #startX, startY, targetX, targetY, attack, range, speed, penet
+                    allBullets.add(Bullet(self.rect.x + self.rang / 2 - 20, self.rect.y + self.rang / 2 - 20, s.rect.x, s.rect.y, self.attack, self.rang, self.bSpeed, self.pene))
+                    break
 
 
     def shoot(self, enemies):
@@ -95,12 +103,14 @@ class Sniper(pygame.sprite.Sprite):
         #super(sniper, self).__init__(self, row, col, board)
         pygame.sprite.Sprite.__init__(self)
 
+
         self.name = 'Sniper'
         self.attack = 20
         self.speed = 3.0
         self.rang = 160
         self.cost = 400
         self.pene = 4
+        self.time = pygame.time.get_ticks() - 1500
 
         s = pygame.Surface((self.rang,self.rang))
         s.set_alpha(10)
@@ -117,13 +127,15 @@ class Sniper(pygame.sprite.Sprite):
         self.rect.y -= self.rang / 2 - 20
 
     def update(self):
-        for s in allEnemies:
-            if(checkCollision(self, s)):
-                print('In range')
+        if pygame.time.get_ticks() - self.time > 1500:
+            self.time = pygame.time.get_ticks()
+            for s in allEnemies:
+                if(checkCollision(self, s)):
+                    #startX, startY, targetX, targetY, attack, range, speed, penet
+                    allBullets.add(Bullet(self.rect.x + self.rang / 2 - 20, self.rect.y + self.rang / 2 - 20, s.rect.x, s.rect.y, self.attack, self.rang, self.bSpeed, self.pene))
+                    break
 
 
-    def shoot(self, enemies):
-        pass
 
 class Bullet(pygame.sprite.Sprite):
     def __init__(self, startX, startY, targetX, targetY, attack, range, speed, penet):
