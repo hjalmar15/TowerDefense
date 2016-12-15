@@ -1,6 +1,6 @@
 import pygame
 from Board import *
-from Enemy import *
+import math
 
 class Tower(object):
     def __init__(self, row, col, board):
@@ -26,6 +26,7 @@ class Shooter(pygame.sprite.Sprite):
         self.name = 'Shooter'
         self.attack = 10
         self.speed = 1.0
+        self.bSpeed = 10
         self.rang = 160
         self.cost = 100
         self.pene = 1
@@ -41,24 +42,15 @@ class Shooter(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = col
         self.rect.y = row
-        self.rect.x -= 60
-        self.rect.y -= 60
+        self.rect.x -= self.rang / 2 - 20
+        self.rect.y -= self.rang / 2 - 20
 
 
     def update(self):
         for s in allEnemies:
             if(checkCollision(self, s)):
-                print('In range')
-
-
-    def shoot(self, enemies):
-        pass
-
-
-
-
-
-
+                #startX, startY, targetX, targetY, attack, range, speed, penet
+                allBullets.add(Bullet(self.rect.x + self.rang / 2 - 20, self.rect.y + self.rang / 2 - 20, s.rect.x, s.rect.y, self.attack, self.rang, self.bSpeed, self.pene))
 
 class Bomber(pygame.sprite.Sprite):
     def __init__(self, row, col):
@@ -83,8 +75,8 @@ class Bomber(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = col
         self.rect.y = row
-        self.rect.x -= 60
-        self.rect.y -= 60
+        self.rect.x -= self.rang / 2 - 20
+        self.rect.y -= self.rang / 2 - 20
 
 
 
@@ -121,8 +113,8 @@ class Sniper(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = col
         self.rect.y = row
-        self.rect.x -= 60
-        self.rect.y -= 60
+        self.rect.x -= self.rang / 2 - 20
+        self.rect.y -= self.rang / 2 - 20
 
     def update(self):
         for s in allEnemies:
@@ -133,8 +125,55 @@ class Sniper(pygame.sprite.Sprite):
     def shoot(self, enemies):
         pass
 
+class Bullet(pygame.sprite.Sprite):
+    def __init__(self, startX, startY, targetX, targetY, attack, range, speed, penet):
+        #super(sniper, self).__init__(self, row, col, board)
+        pygame.sprite.Sprite.__init__(self)
+
+        self.name = 'Bullet'
+        self.attack = attack
+        self.range = range
+        self.speed = speed
+        self.penet = penet
+        self.targetX = targetX
+        self.targetY = targetY
+        self.startX = startX
+        self.startY = startY
+
+        icon = pygame.image.load('Sprites/Bullet.png')
+        self.image = icon
+
+        self.rect = self.image.get_rect()
+        self.rect.x = startX
+        self.rect.y = startY
+        self.bullet_vector = Move(targetX, targetY, startX, startY, speed)
+    def update(self):
+        self.rect.x += self.bullet_vector[0]
+        self.rect.y += self.bullet_vector[1]
+
+        if self.rect.x < 0:
+            self.kill()
+        if self.rect.x > 1000:
+            self.kill()
+        if self.rect.y < 0:
+            self.kill()
+        if self.rect.y > 720:
+            self.kill()
 
 
 def checkCollision(obj1, obj2):
     return pygame.sprite.collide_rect(obj1, obj2)
 
+
+def Move(t0,t1,psx,psy,speed):
+    global mx
+    global my
+
+    speed = speed
+
+    distance = [t0 - psx, t1 - psy]
+    norm = math.sqrt(distance[0] ** 2 + distance[1] ** 2)
+    direction = [distance[0] / norm, distance[1 ] / norm]
+
+    bullet_vector = [direction[0] * speed, direction[1] * speed]
+    return bullet_vector

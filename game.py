@@ -123,6 +123,8 @@ def theGame():
                 allEnemies.update()
                 allEnemies.draw(screen)
                 towers.update()
+                allBullets.update()
+                allBullets.draw(screen)
                 pygame.display.flip()
                 clock.tick(30)
 

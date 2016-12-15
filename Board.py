@@ -1,6 +1,8 @@
 import pygame, sys
 from pygame.locals import *
 
+allBullets = pygame.sprite.Group()
+allEnemies = pygame.sprite.Group()
 
 initMoney = 300
 initScore = 0

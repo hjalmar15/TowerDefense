@@ -62,6 +62,9 @@ class Yellow(pygame.sprite.Sprite):
             if self.count + 1 < len(PATH):
                 self.count += 1
             a, b = PATH[self.count]
+        for x in allBullets:
+            if pygame.sprite.collide_rect(x, self):
+                self.kill()
 
 class Green(pygame.sprite.Sprite):
     def __init__(self, speed, health, reward):
@@ -120,6 +123,9 @@ class Green(pygame.sprite.Sprite):
             if self.count + 1 < len(PATH):
                 self.count += 1
             a, b = PATH[self.count]
+        for x in allBullets:
+            if pygame.sprite.collide_rect(x, self):
+                self.kill()
 
 
 class Blue(pygame.sprite.Sprite):
@@ -180,6 +186,10 @@ class Blue(pygame.sprite.Sprite):
                 self.count += 1
             a, b = PATH[self.count]
 
+        for x in allBullets:
+            if pygame.sprite.collide_rect(x, self):
+                self.kill()
+
 class Red(pygame.sprite.Sprite):
     def __init__(self, speed, health, reward):
        # Call the parent class (Sprite) constructor
@@ -237,3 +247,6 @@ class Red(pygame.sprite.Sprite):
             if self.count+1 < len(PATH):
                 self.count += 1
             a,b = PATH[self.count]
+        for x in allBullets:
+            if pygame.sprite.collide_rect(x, self):
+                self.kill()
