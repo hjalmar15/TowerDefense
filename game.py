@@ -18,8 +18,10 @@ clock = pygame.time.Clock()
 
 screen = pygame.display.set_mode((display_width, display_height))
 
+font = pygame.font.Font('Fonts/freesansbold.ttf', 30)
 
 allSprites = pygame.sprite.Group()
+towers = pygame.sprite.Group()
 start = Red(0)
 prev = []
 queue = []
@@ -42,7 +44,6 @@ def introMenu():
                         elif event.type == pygame.MOUSEBUTTONUP:
                                 mouseClicked = True
                                 
-                font = pygame.font.Font('Fonts/freesansbold.ttf',30)
                 x = display_width/2
                 y = display_height/3
                 #isClick = stores location of menu items "rect"
@@ -108,18 +109,12 @@ def theGame():
                                 startWave()
                 allSprites.update()
                 allSprites.draw(screen)
+                #towers.update()
+                #towers.draw(screen)
                 pygame.display.flip()
                 clock.tick(30)
 
 
-
-                font = pygame.font.Font('Fonts/freesansbold.ttf',30)
-
-
-                fundDisp = font.render('Funds: %d' % money, 1, black)
-                #funde = fundDisp.get_rect()
-                #fundDisp.topleft = (1050, 400)
-                DISPLAYSURF.blit(fundDisp, (100, 100))
         
 
 
@@ -183,15 +178,15 @@ def placeTower(tower):
                                 if(tower == 7):
                                         shooter = Shooter(y1, x1)
 
-                                        allSprites.add(shooter)
+                                        towers.add(shooter)
                                 if (tower == 8):
                                         bomber = Bomber(y1, x1)
 
-                                        allSprites.add(bomber)
+                                        towers.add(bomber)
                                 if (tower == 9):
                                         sniper = Sniper(y1, x1)
 
-                                        allSprites.add(sniper)
+                                        towers.add(sniper)
 
                                 runIt = False
                                 

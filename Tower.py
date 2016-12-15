@@ -1,5 +1,6 @@
 import pygame
 from Board import *
+from game import *
 
 class Tower(object):
     def __init__(self, row, col, board):
@@ -29,7 +30,8 @@ class Shooter(pygame.sprite.Sprite):
         self.cost = 100
         self.pene = 1
 
-        icon = pygame.image.load('Sprites/Shooter.png')
+        #icon = pygame.image.load('Sprites/Shooter.png')
+        icon = pic
         self.image = icon
 
         row *= 40
@@ -38,6 +40,18 @@ class Shooter(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = col
         self.rect.y = row
+
+
+        def update(self):
+            if(checkCollision(self, allSprites)):
+                print('In range')
+
+
+        def shoot(self, enemies):
+            pass
+
+
+
 
 
 
@@ -54,7 +68,7 @@ class Bomber(pygame.sprite.Sprite):
         self.cost = 150
         self.pene = 2
 
-        icon = pygame.image.load('Sprites/Bomber.png')
+        icon = pygame.image.load('Sprites/BomberRange.png')
         self.image = icon
 
         row *= 40
@@ -63,6 +77,14 @@ class Bomber(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = col
         self.rect.y = row
+
+
+        def update(self):
+            pass
+
+
+        def shoot(self, enemies):
+            pass
 
 
 class Sniper(pygame.sprite.Sprite):
@@ -77,7 +99,8 @@ class Sniper(pygame.sprite.Sprite):
         self.cost = 400
         self.pene = 4
 
-        icon = pygame.image.load('Sprites/Sniper.png')
+        #icon = pygame.image.load('Sprites/Sniper.png')
+        icon = pic
         self.image = icon
 
         row *= 40
@@ -88,4 +111,7 @@ class Sniper(pygame.sprite.Sprite):
         self.rect.y = row
 
 
+def checkCollision(obj1, obj2):
+    col = pygame.sprite.collide_rect(obj1, obj2)
+    return col
 
