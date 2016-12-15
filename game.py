@@ -18,6 +18,12 @@ clock = pygame.time.Clock()
 
 screen = pygame.display.set_mode((display_width, display_height))
 
+font = pygame.font.Font('Fonts/freesansbold.ttf',30)
+
+initMoney = 300
+initScore = 0
+initLives = 5
+initLevel = 0
 
 allSprites = pygame.sprite.Group()
 start = Red(0,0,0)
@@ -42,7 +48,7 @@ def introMenu():
                         elif event.type == pygame.MOUSEBUTTONUP:
                                 mouseClicked = True
                                 
-                font = pygame.font.Font('Fonts/freesansbold.ttf',30)
+
                 x = display_width/2
                 y = display_height/3
                 #isClick = stores location of menu items "rect"
@@ -75,15 +81,13 @@ def theGame():
         mousey = 0
         selectedTower = None
         #Initialize game
-        money = 200
-        score = 0
-        lives = 5
-        level = 0
+        gameStats = [initMoney, initLevel, initLives, initScore]
         run = True
         while run:
                 drawBoard()
                 drawButtons()
                 drawQueue()
+                drawStats(gameStats)
                 mouseClicked = False
                 for event in pygame.event.get():
                         if event.type == pygame.QUIT:
@@ -111,18 +115,28 @@ def theGame():
                 pygame.display.flip()
                 clock.tick(30)
 
-
-
-                font = pygame.font.Font('Fonts/freesansbold.ttf',30)
-
-
-                fundDisp = font.render('Funds: %d' % money, 1, black)
-                #funde = fundDisp.get_rect()
-                #fundDisp.topleft = (1050, 400)
-                DISPLAYSURF.blit(fundDisp, (100, 100))
         
 
+def drawStats(gameStats):
+        moneyDisp = font.render('Money: %d' % gameStats[0], 1, black)
+        moneyRect = moneyDisp.get_rect()
+        moneyRect.topleft = (1050, 600)
+        DISPLAYSURF.blit(moneyDisp, moneyRect)
 
+        levelDisp = font.render('Level: %d' % gameStats[1], 1, white)
+        levelRect = moneyDisp.get_rect()
+        levelRect.topleft = (10, 0)
+        DISPLAYSURF.blit(levelDisp, levelRect)
+
+        livesDisp = font.render('Lives: %d' % gameStats[2], 1, white)
+        livesRect = moneyDisp.get_rect()
+        livesRect.topleft = (875, 0)
+        DISPLAYSURF.blit(livesDisp, livesRect)
+
+        scoreDisp = font.render('Score: %d' % gameStats[3], 1, white)
+        scoreRect = scoreDisp.get_rect()
+        scoreRect.topleft = (450, 0)
+        DISPLAYSURF.blit(scoreDisp, scoreRect)
 def drawQueue():
         if len(queue) > 0:
                 if len(prev) == 0:
