@@ -155,7 +155,7 @@ def placeTower(tower):
                                 mousex, mousey = event.pos
                                 mouseClick = True
                 img = textures[tower]
-                screen.blit(img, (mousex, mousey))
+                screen.blit(img, (mousex-20, mousey-20))
                 allSprites.update()
                 allSprites.draw(screen)
                 
