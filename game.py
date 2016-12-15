@@ -94,8 +94,17 @@ def theGame():
                         elif event.type == pygame.MOUSEBUTTONUP:
                                 mousex, mousey = event.pos
                                 mouseClicked = True
-                if 1 == 3:
+                if gameStats[1] == 11:
                         youWin()
+                        runWin = True
+                        while True:
+                                for event in pygame.event.get():
+                                        if event.type == QUIT:
+                                                pygame.quit()
+                                                quit()
+                                        elif event.type == MOUSEBUTTONUP:
+                                                introMenu()
+                                                runWin = False
                 if mouseClicked:
                         whatClicked = click(mousex, mousey)
                         if whatClicked == 'placeSh':
@@ -107,6 +116,10 @@ def theGame():
                         if whatClicked == "start":
                                 gameStats[1] += 1
                                 startWave(gameStats[1])
+
+                if gameStats[2] == 0:
+                        gameOver()
+
                 allEnemies.update()
                 allEnemies.draw(screen)
                 towers.update()
@@ -245,6 +258,32 @@ def getGridAtPixel(mousex, mousey):
         if x >= 0 and x <= 32 and y >= 0 and y <= 18:
                 return x, y
 
+
+def youWin():
+        DISPLAYSURF.blit(textures[11], (350, 220))
+        runWin = True
+        pygame.display.flip()
+        while runWin:
+                for event in pygame.event.get():
+                        if event.type == QUIT:
+                                pygame.quit()
+                                quit()
+                        elif event.type == MOUSEBUTTONUP:
+                                pygame.quit()
+                                quit()
+
+def gameOver():
+        screen.blit(textures[15], (350, 220))
+        runDefeat = True
+        pygame.display.flip()
+        while runDefeat:
+                for event in pygame.event.get():
+                        if event.type == QUIT:
+                                pygame.quit()
+                                quit()
+                        elif event.type == MOUSEBUTTONUP:
+                                pygame.quit()
+                                quit()
 introMenu()
 pygame.quit()
 quit()
