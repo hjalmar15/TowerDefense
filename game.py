@@ -232,20 +232,65 @@ def click(mousex, mousey):
 
 def startWave(level):
         # Yellow < Green < Blue < Red
+
         if level == 1:
                 queue.append(Yellow(2, 10, 100))
                 queue.append(Yellow(2, 10, 100))
         elif level == 2:
-                queue.append(Green(8, 10, 100))
-                queue.append(Green(9, 10, 100))
+                queue.append(Yellow(2, 10, 100))
+                queue.append(Yellow(2, 10, 100))
+                queue.append(Yellow(2, 10, 100))
+                queue.append(Yellow(2, 10, 100))
         elif level == 3:
-                queue.append(Blue(4, 10, 100))
-                queue.append(Blue(5, 10, 100))
-        else:
-                queue.append(Red(1, 10, 100))
-                queue.append(Red(2, 10, 100))
-                queue.append(Red(3, 10, 100))
-
+                queue.append(Yellow(2, 10, 100))
+                queue.append(Yellow(2, 10, 100))
+                queue.append(Green(3, 20, 100))
+                queue.append(Green(3, 20, 100))
+        elif level == 4:
+                queue.append(Yellow(2, 10, 100))
+                queue.append(Yellow(2, 10, 100))
+                queue.append(Green(3, 20, 100))
+                queue.append(Green(3, 20, 100))
+                queue.append(Green(3, 20, 100))
+                queue.append(Green(3, 20, 100))
+        elif level == 5:
+                for i in range(0, 5):
+                        queue.append(Green(3, 20, 100))
+                queue.append(Blue(4, 100, 200))
+        elif level == 6:
+                for i in range(0, 5):
+                        queue.append(Green(3, 20, 100))
+                for i in range(0, 5):
+                        queue.append(Blue(4, 100, 200))
+        elif level == 7:
+                for i in range(0, 5):
+                        queue.append(Yellow(2, 10, 100))
+                for i in range(0, 5):
+                        queue.append(Green(3, 20, 100))
+                for i in range(0, 5):
+                        queue.append(Blue(4, 100, 200))
+        elif level == 8:
+                for i in range(0, 7):
+                        queue.append(Yellow(2, 10, 100))
+                for i in range(0, 7):
+                        queue.append(Green(3, 20, 100))
+                for i in range(0, 7):
+                        queue.append(Blue(4, 100, 200))
+        elif level == 9:
+                for i in range(0, 10):
+                        queue.append(Yellow(2, 10, 100))
+                for i in range(0, 10):
+                        queue.append(Green(3, 20, 100))
+                for i in range(0, 10):
+                        queue.append(Blue(4, 100, 200))
+        elif level == 10:
+                for i in range(0, 10):
+                        queue.append(Yellow(2, 10, 100))
+                for i in range(0, 10):
+                        queue.append(Green(3, 20, 100))
+                for i in range(0, 10):
+                        queue.append(Blue(4, 100, 200))
+                queue.append(Red(1, 500, 1000))
 
         
 def placeTower(tower, gameStats):
