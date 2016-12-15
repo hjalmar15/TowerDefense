@@ -18,11 +18,20 @@ clock = pygame.time.Clock()
 
 screen = pygame.display.set_mode((display_width, display_height))
 
-font = pygame.font.Font('Fonts/freesansbold.ttf', 30)
 
 allSprites = pygame.sprite.Group()
 towers = pygame.sprite.Group()
-start = Red(0)
+
+
+font = pygame.font.Font('Fonts/freesansbold.ttf',30)
+
+initMoney = 300
+initScore = 0
+initLives = 5
+initLevel = 0
+
+start = Red(0,0,0)
+
 prev = []
 queue = []
 
@@ -43,7 +52,7 @@ def introMenu():
                                 quit()
                         elif event.type == pygame.MOUSEBUTTONUP:
                                 mouseClicked = True
-                                
+
                 x = display_width/2
                 y = display_height/3
                 #isClick = stores location of menu items "rect"
@@ -76,15 +85,13 @@ def theGame():
         mousey = 0
         selectedTower = None
         #Initialize game
-        money = 200
-        score = 0
-        lives = 5
-        level = 0
+        gameStats = [initMoney, initLevel, initLives, initScore]
         run = True
         while run:
                 drawBoard()
                 drawButtons()
                 drawQueue()
+                drawStats(gameStats)
                 mouseClicked = False
                 for event in pygame.event.get():
                         if event.type == pygame.QUIT:
@@ -98,7 +105,7 @@ def theGame():
                 if 1 == 3:
                         youWin()
                 if mouseClicked:
-                        whatClicked = click(mousex, mousey, level)
+                        whatClicked = click(mousex, mousey)
                         if whatClicked == 'placeSh':
                                 placeTower(8)
                         if whatClicked == 'placeB':
@@ -106,7 +113,8 @@ def theGame():
                         if whatClicked == 'placeSn':
                                 placeTower(9)
                         if whatClicked == "start":
-                                startWave()
+                                gameStats[1] += 1
+                                startWave(gameStats[1])
                 allSprites.update()
                 allSprites.draw(screen)
                 #towers.update()
@@ -114,9 +122,28 @@ def theGame():
                 pygame.display.flip()
                 clock.tick(30)
 
-
         
 
+def drawStats(gameStats):
+        moneyDisp = font.render('Money: %d' % gameStats[0], 1, black)
+        moneyRect = moneyDisp.get_rect()
+        moneyRect.topleft = (1050, 600)
+        DISPLAYSURF.blit(moneyDisp, moneyRect)
+
+        levelDisp = font.render('Level: %d' % gameStats[1], 1, white)
+        levelRect = moneyDisp.get_rect()
+        levelRect.topleft = (10, 0)
+        DISPLAYSURF.blit(levelDisp, levelRect)
+
+        livesDisp = font.render('Lives: %d' % gameStats[2], 1, white)
+        livesRect = moneyDisp.get_rect()
+        livesRect.topleft = (875, 0)
+        DISPLAYSURF.blit(livesDisp, livesRect)
+
+        scoreDisp = font.render('Score: %d' % gameStats[3], 1, white)
+        scoreRect = scoreDisp.get_rect()
+        scoreRect.topleft = (450, 0)
+        DISPLAYSURF.blit(scoreDisp, scoreRect)
 
 def drawQueue():
         if len(queue) > 0:
@@ -130,7 +157,7 @@ def drawQueue():
                         allSprites.add(creep)
 
 
-def click(mousex, mousey, level):
+def click(mousex, mousey):
         if mousex >= 1050 and mousex <= 1090 and mousey >= 120 and mousey <= 160:
                 return 'placeSh'
         elif mousex >= 1050 and mousex <= 1090 and mousey >= 200 and mousey <= 240:
@@ -142,14 +169,35 @@ def click(mousex, mousey, level):
         else:
                 return None
 
-def startWave():
-        queue.append(Red(2))
-        queue.append(Red(2))
-        queue.append(Red(2))
+def startWave(level):
+        # Yellow < Green < Blue < Red
+        if level == 1:
+                queue.append(Yellow(6, 10, 100))
+                queue.append(Yellow(7, 10, 100))
+        elif level == 2:
+                queue.append(Green(8, 10, 100))
+                queue.append(Green(9, 10, 100))
+        elif level == 3:
+                queue.append(Blue(4, 10, 100))
+                queue.append(Blue(5, 10, 100))
+        else:
+                queue.append(Red(1, 10, 100))
+                queue.append(Red(2, 10, 100))
+                queue.append(Red(3, 10, 100))
+
+
         
 def placeTower(tower):
         runIt = True
-        mousex, mousey = 1000,100
+
+        if tower == 7:
+                mousex, mousey = 1050, 200
+        if tower == 8:
+                mousex, mousey = 1050, 120
+        if tower == 9:
+                mousex, mousey = 1050, 280
+        mousex += 20
+        mousey += 20
         while runIt:
                 drawBoard()
                 drawButtons()
