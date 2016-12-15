@@ -17,6 +17,12 @@ red = (255,0,0)
 clock = pygame.time.Clock()
 
 screen = pygame.display.set_mode((display_width, display_height))
+
+allSprites = pygame.sprite.Group()
+start = Red(0)
+prev = []
+queue = []
+
 def introMenu():
         #list of menu text
         text = ['Play Game', 'Quit']
@@ -60,8 +66,6 @@ def introMenu():
                                 
                 pygame.display.update()
                 clock.tick(15)
-allSprites = pygame.sprite.Group()
-
 def theGame():
         #Initialize mouse and screen
         pygame.mixer.music.stop()
@@ -75,14 +79,10 @@ def theGame():
         lives = 5
         level = 0
         run = True
-
-        red = Red(4)
-        
-        allSprites.add(red)
-        
         while run:
                 drawBoard()
                 drawButtons()
+                drawQueue()
                 mouseClicked = False
                 for event in pygame.event.get():
                         if event.type == pygame.QUIT:
@@ -103,25 +103,40 @@ def theGame():
                                 placeTower(7)
                         if whatClicked == 'placeSn':
                                 placeTower(9)
+                        if whatClicked == "start":
+                                startWave()
                 allSprites.update()
                 allSprites.draw(screen)
                 pygame.display.flip()
                 clock.tick(30)
 
-def click(mousex, mousey, level):
-	if mousex >= 1050 and mousex <= 1090 and mousey >= 120 and mousey <= 160:
-		return 'placeSh'
-	elif mousex >= 1050 and mousex <= 1090 and mousey >= 200 and mousey <= 240:
-		return 'placeB'
-	elif mousex >= 1050 and mousex <= 1090 and mousey >= 280 and mousey <= 320:
-		return 'placeSn'
-	elif mousex >= 1050 and mousex <= 1230 and mousey >= 650 and mousey <= 710:
-		return 'start'
-	else:
-		return None
+def drawQueue():
+        if len(queue) > 0:
+                if len(prev) == 0:
+                        creep = queue.pop()
+                        prev.append(creep)
+                        allSprites.add(creep)
+                elif not pygame.sprite.collide_rect(start, prev[0]):
+                        creep = queue.pop()
+                        prev[0] = (creep)
+                        allSprites.add(creep)
 
-##def startWave(level):
-        
+def click(mousex, mousey, level):
+        if mousex >= 1050 and mousex <= 1090 and mousey >= 120 and mousey <= 160:
+                return 'placeSh'
+        elif mousex >= 1050 and mousex <= 1090 and mousey >= 200 and mousey <= 240:
+                return 'placeB'
+        elif mousex >= 1050 and mousex <= 1090 and mousey >= 280 and mousey <= 320:
+                return 'placeSn'
+        elif mousex >= 1050 and mousex <= 1230 and mousey >= 650 and mousey <= 710:
+                return 'start'
+        else:
+                return None
+
+def startWave():
+        queue.append(Red(2))
+        queue.append(Red(2))
+        queue.append(Red(2))
         
 def placeTower(tower):
         runIt = True
@@ -156,10 +171,10 @@ def placeTower(tower):
                 clock.tick(30)
         
 def getGridAtPixel(mousex, mousey):
-	x = (mousex) / 40
-	y = (mousey) / 40
-	if x >= 0 and x <= 32 and y >= 0 and y <= 18:
-		return x, y
+        x = (mousex) / 40
+        y = (mousey) / 40
+        if x >= 0 and x <= 32 and y >= 0 and y <= 18:
+                return x, y
 	
                 
 introMenu()
