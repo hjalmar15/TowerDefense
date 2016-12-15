@@ -94,7 +94,7 @@ def theGame():
                         elif event.type == pygame.MOUSEBUTTONUP:
                                 mousex, mousey = event.pos
                                 mouseClicked = True
-                if gameStats[1] == 11:
+                if gameStats[1] == 10 and len(allEnemies) == 0:
                         youWin()
                         runWin = True
                         while True:
@@ -113,7 +113,7 @@ def theGame():
                                 placeTower(7, gameStats)
                         if whatClicked == 'placeSn':
                                 placeTower(9, gameStats)
-                        if whatClicked == "start":
+                        if whatClicked == "start" and gameStats[1] < 10:
                                 gameStats[1] += 1
                                 startWave(gameStats[1])
 
@@ -123,7 +123,6 @@ def theGame():
                 allEnemies.update()
                 allEnemies.draw(screen)
                 towers.update()
-                towers.draw(screen)
                 pygame.display.flip()
                 clock.tick(30)
 
@@ -229,24 +228,32 @@ def placeTower(tower, gameStats):
                         x1 = int(x)
                         y1 = int(y)
                         if tilemap[y1][x1] == 1:
-                                tilemap[y1][x1] = tower
 
                                 if(tower == 7):
+                                        shooter = Shooter(y1, x1)
+                                        if gameStats[0] - shooter.cost < 0:
+                                            break
                                         shooter = Shooter(y1, x1)
                                         gameStats[0] -= shooter.cost
 
                                         towers.add(shooter)
                                 if (tower == 8):
                                         bomber = Bomber(y1, x1)
+                                        if gameStats[0] - bomber.cost < 0:
+                                            break
+                                        bomber = Bomber(y1, x1)
                                         gameStats[0] -= bomber.cost
 
                                         towers.add(bomber)
                                 if (tower == 9):
                                         sniper = Sniper(y1, x1)
+                                        if gameStats[0] - sniper.cost < 0:
+                                            break
                                         gameStats[0] -= sniper.cost
 
                                         towers.add(sniper)
 
+                                tilemap[y1][x1] = tower
                                 runIt = False
                                 
                 pygame.display.flip()
