@@ -31,6 +31,7 @@ WIN = 11
 SHOOTERSHOP = 12
 BOMBERSHOP = 13
 SNIPERSHOP = 14
+GAMEOVER = 15
 
 
 colors = {
@@ -55,6 +56,7 @@ textures = {
         SHOOTERSHOP: pygame.image.load('Sprites/ShooterShop.png'),
         BOMBERSHOP: pygame.image.load('Sprites/BomberShop.png'),
         SNIPERSHOP: pygame.image.load('Sprites/SniperShop.png'),
+        GAMEOVER: pygame.image.load('Sprites/GameOver.png')
         }
 
 
@@ -124,4 +126,6 @@ def getEnemyPath():
 
 def youWin():
         DISPLAYSURF.blit(textures[11], (350, 220))
+
+
 
