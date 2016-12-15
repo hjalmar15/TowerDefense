@@ -64,6 +64,8 @@ class Yellow(pygame.sprite.Sprite):
             a, b = PATH[self.count]
         for x in allBullets:
             if pygame.sprite.collide_rect(x, self):
+                gameStats[0] += self.reward
+                gameStats[3] += self.maxHealth
                 x.kill()
                 x.remove()
                 self.kill()
@@ -129,6 +131,8 @@ class Green(pygame.sprite.Sprite):
             a, b = PATH[self.count]
         for x in allBullets:
             if pygame.sprite.collide_rect(x, self):
+                gameStats[0] += self.reward
+                gameStats[3] += self.maxHealth
                 x.kill()
                 x.remove()
                 self.kill()
@@ -196,6 +200,8 @@ class Blue(pygame.sprite.Sprite):
 
         for x in allBullets:
             if pygame.sprite.collide_rect(x, self):
+                gameStats[0] += self.reward
+                gameStats[3] += self.maxHealth
                 x.kill()
                 x.remove()
                 self.kill()
@@ -261,6 +267,8 @@ class Red(pygame.sprite.Sprite):
             a,b = PATH[self.count]
         for x in allBullets:
             if pygame.sprite.collide_rect(x, self):
+                gameStats[0] += self.reward
+                gameStats[3] += self.maxHealth
                 x.kill()
                 x.remove()
                 self.kill()

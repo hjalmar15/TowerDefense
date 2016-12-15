@@ -28,7 +28,7 @@ class Shooter(pygame.sprite.Sprite):
         self.speed = 1.0
         self.bSpeed = 10
         self.rang = 160
-        self.cost = 100
+        self.cost = 150
         self.pene = 1
         self.time = pygame.time.get_ticks() - 1500
 
@@ -65,7 +65,7 @@ class Bomber(pygame.sprite.Sprite):
         self.speed = 2.0
         self.bSpeed = 10
         self.rang = 160
-        self.cost = 150
+        self.cost = 100
         self.pene = 2
         self.time = pygame.time.get_ticks() - 1500
 
@@ -109,8 +109,8 @@ class Sniper(pygame.sprite.Sprite):
         self.attack = 20
         self.speed = 3.0
         self.bSpeed = 10
-        self.rang = 160
-        self.cost = 400
+        self.rang = 360
+        self.cost = 300
         self.pene = 4
         self.time = pygame.time.get_ticks() - 1500
 
