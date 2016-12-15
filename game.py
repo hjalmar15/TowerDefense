@@ -182,7 +182,15 @@ def startWave(level):
         
 def placeTower(tower):
         runIt = True
-        mousex, mousey = 1000,100
+
+        if tower == 7:
+                mousex, mousey = 1050, 200
+        if tower == 8:
+                mousex, mousey = 1050, 120
+        if tower == 9:
+                mousex, mousey = 1050, 280
+        mousex += 20
+        mousey += 20
         while runIt:
                 drawBoard()
                 drawButtons()
