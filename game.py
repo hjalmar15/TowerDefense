@@ -162,15 +162,17 @@ def click(mousex, mousey, level):
                 return None
 
 def startWave():
+        # Yellow < Green < Blue < Red
+
         queue.append(Red(1, 10, 100))
         queue.append(Red(2, 10, 100))
         queue.append(Red(3, 10, 100))
-        queue.append(Red(4, 10, 100))
-        queue.append(Red(5, 10, 100))
-        queue.append(Red(6, 10, 100))
-        queue.append(Red(7, 10, 100))
-        queue.append(Red(8, 10, 100))
-        queue.append(Red(9, 10, 100))
+        queue.append(Blue(4, 10, 100))
+        queue.append(Blue(5, 10, 100))
+        queue.append(Yellow(6, 10, 100))
+        queue.append(Yellow(7, 10, 100))
+        queue.append(Green(8, 10, 100))
+        queue.append(Green(9, 10, 100))
         
 def placeTower(tower):
         runIt = True
