@@ -18,8 +18,6 @@ clock = pygame.time.Clock()
 
 screen = pygame.display.set_mode((display_width, display_height))
 
-
-allSprites = pygame.sprite.Group()
 towers = pygame.sprite.Group()
 
 
@@ -115,10 +113,10 @@ def theGame():
                         if whatClicked == "start":
                                 gameStats[1] += 1
                                 startWave(gameStats[1])
-                allSprites.update()
-                allSprites.draw(screen)
-                #towers.update()
-                #towers.draw(screen)
+                allEnemies.update()
+                allEnemies.draw(screen)
+                towers.update()
+                towers.draw(screen)
                 pygame.display.flip()
                 clock.tick(30)
 
@@ -150,11 +148,11 @@ def drawQueue():
                 if len(prev) == 0:
                         creep = queue.pop()
                         prev.append(creep)
-                        allSprites.add(creep)
+                        allEnemies.add(creep)
                 elif not pygame.sprite.collide_rect(start, prev[0]):
                         creep = queue.pop()
                         prev[0] = (creep)
-                        allSprites.add(creep)
+                        allEnemies.add(creep)
 
 
 def click(mousex, mousey):
@@ -213,8 +211,10 @@ def placeTower(tower):
                                 mouseClick = True
                 img = textures[tower]
                 screen.blit(img, (mousex-20, mousey-20))
-                allSprites.update()
-                allSprites.draw(screen)
+                allEnemies.update()
+                allEnemies.draw(screen)
+                towers.update()
+                towers.draw(screen)
                 
                 if mouseClick == True:
                         x, y = getGridAtPixel(int(mousex), int(mousey))
