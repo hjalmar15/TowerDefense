@@ -158,36 +158,39 @@ def drawStats(gameStats):
         bomber = Bomber(1050, 200)
         sniper = Sniper(1050, 280)
 
-        shooterDisp = fontMin.render('Shooter', 1, black)
-        shooterRect = shooterDisp.get_rect()
-        shooterRect.topleft = (1100, 110)
-        DISPLAYSURF.blit(shooterDisp, shooterRect)
-
-        shooterStatsDisp = fontStats.render('Damage: %d' % shooter.attack + '  Speed: %d' % shooter.speed, 1, black)
-        shooterStatsRect = shooterStatsDisp.get_rect()
-        shooterStatsRect.topleft = (1100, 130)
-        DISPLAYSURF.blit(shooterStatsDisp, shooterStatsRect)
-
-        shooterRangDisp = fontStats.render('Range: %d' % shooter.rang, 1, black)
-        shooterRangRect = shooterRangDisp.get_rect()
-        shooterRangRect.topleft = (1100, 145)
-        DISPLAYSURF.blit(shooterRangDisp, shooterRangRect)
-
+        #Bomber
         bomberDisp = fontMin.render('Bomber', 1, black)
         bomberRect = bomberDisp.get_rect()
-        bomberRect.topleft = (1100, 200)
+        bomberRect.topleft = (1100, 110)
         DISPLAYSURF.blit(bomberDisp, bomberRect)
 
         bomberStatsDisp = fontStats.render('Damage: %d' % bomber.attack + '  Speed: %d' % bomber.speed, 1, black)
         bomberStatsRect = bomberStatsDisp.get_rect()
-        bomberStatsRect.topleft = (1100, 220)
+        bomberStatsRect.topleft = (1100, 130)
         DISPLAYSURF.blit(bomberStatsDisp, bomberStatsRect)
 
         bomberRangDisp = fontStats.render('Range: %d' % bomber.rang, 1, black)
         bomberRangRect = bomberRangDisp.get_rect()
-        bomberRangRect.topleft = (1100, 235)
+        bomberRangRect.topleft = (1100, 145)
         DISPLAYSURF.blit(bomberRangDisp, bomberRangRect)
 
+        #Shooter
+        shooterDisp = fontMin.render('Shooter', 1, black)
+        shooterRect = shooterDisp.get_rect()
+        shooterRect.topleft = (1100, 200)
+        DISPLAYSURF.blit(shooterDisp, shooterRect)
+
+        shooterStatsDisp = fontStats.render('Damage: %d' % shooter.attack + '  Speed: %d' % shooter.speed, 1, black)
+        shooterStatsRect = shooterStatsDisp.get_rect()
+        shooterStatsRect.topleft = (1100, 220)
+        DISPLAYSURF.blit(shooterStatsDisp, shooterStatsRect)
+
+        shooterRangDisp = fontStats.render('Range: %d' % shooter.rang, 1, black)
+        shooterRangRect = shooterRangDisp.get_rect()
+        shooterRangRect.topleft = (1100, 235)
+        DISPLAYSURF.blit(shooterRangDisp, shooterRangRect)
+
+        #Sniper
         sniperDisp = fontMin.render('Sniper', 1, black)
         sniperRect = sniperDisp.get_rect()
         sniperRect.topleft = (1100, 280)
