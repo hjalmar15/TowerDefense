@@ -63,6 +63,7 @@ class Bomber(pygame.sprite.Sprite):
         self.name = 'Bomber'
         self.attack = 25
         self.speed = 2.0
+        self.bSpeed = 10
         self.rang = 160
         self.cost = 150
         self.pene = 2
@@ -107,6 +108,7 @@ class Sniper(pygame.sprite.Sprite):
         self.name = 'Sniper'
         self.attack = 20
         self.speed = 3.0
+        self.bSpeed = 10
         self.rang = 160
         self.cost = 400
         self.pene = 4
