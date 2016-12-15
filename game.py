@@ -22,6 +22,9 @@ towers = pygame.sprite.Group()
 
 
 font = pygame.font.Font('Fonts/freesansbold.ttf',30)
+fontMon = pygame.font.Font('Fonts/freesansbold.ttf',22)
+fontMin = pygame.font.Font('Fonts/freesansbold.ttf',15)
+fontStats = pygame.font.Font('Fonts/freesansbold.ttf',12)
 
 start = Red(0,0,0)
 
@@ -126,14 +129,15 @@ def theGame():
                 allBullets.update()
                 allBullets.draw(screen)
                 pygame.display.flip()
-                clock.tick(30)
+                clock.tick(60)
 
         
 
 def drawStats(gameStats):
-        moneyDisp = font.render('Money: %d' % gameStats[0], 1, black)
+        #Players stats
+        moneyDisp = fontMon.render('Money: %d' % gameStats[0], 1, black)
         moneyRect = moneyDisp.get_rect()
-        moneyRect.topleft = (1050, 600)
+        moneyRect.topleft = (1080, 610)
         DISPLAYSURF.blit(moneyDisp, moneyRect)
 
         levelDisp = font.render('Level: %d' % gameStats[1], 1, white)
@@ -150,6 +154,62 @@ def drawStats(gameStats):
         scoreRect = scoreDisp.get_rect()
         scoreRect.topleft = (450, 0)
         DISPLAYSURF.blit(scoreDisp, scoreRect)
+
+        #Tower stats
+        shooter = Shooter(1050, 120)
+        bomber = Bomber(1050, 200)
+        sniper = Sniper(1050, 280)
+
+        #Bomber
+        bomberDisp = fontMin.render('Bomber', 1, black)
+        bomberRect = bomberDisp.get_rect()
+        bomberRect.topleft = (1100, 110)
+        DISPLAYSURF.blit(bomberDisp, bomberRect)
+
+        bomberStatsDisp = fontStats.render('Damage: %d' % bomber.attack + '  Speed: %d' % bomber.speed, 1, black)
+        bomberStatsRect = bomberStatsDisp.get_rect()
+        bomberStatsRect.topleft = (1100, 130)
+        DISPLAYSURF.blit(bomberStatsDisp, bomberStatsRect)
+
+        bomberRangDisp = fontStats.render('Range: %d' % bomber.rang, 1, black)
+        bomberRangRect = bomberRangDisp.get_rect()
+        bomberRangRect.topleft = (1100, 145)
+        DISPLAYSURF.blit(bomberRangDisp, bomberRangRect)
+
+        #Shooter
+        shooterDisp = fontMin.render('Shooter', 1, black)
+        shooterRect = shooterDisp.get_rect()
+        shooterRect.topleft = (1100, 200)
+        DISPLAYSURF.blit(shooterDisp, shooterRect)
+
+        shooterStatsDisp = fontStats.render('Damage: %d' % shooter.attack + '  Speed: %d' % shooter.speed, 1, black)
+        shooterStatsRect = shooterStatsDisp.get_rect()
+        shooterStatsRect.topleft = (1100, 220)
+        DISPLAYSURF.blit(shooterStatsDisp, shooterStatsRect)
+
+        shooterRangDisp = fontStats.render('Range: %d' % shooter.rang, 1, black)
+        shooterRangRect = shooterRangDisp.get_rect()
+        shooterRangRect.topleft = (1100, 235)
+        DISPLAYSURF.blit(shooterRangDisp, shooterRangRect)
+
+        #Sniper
+        sniperDisp = fontMin.render('Sniper', 1, black)
+        sniperRect = sniperDisp.get_rect()
+        sniperRect.topleft = (1100, 280)
+        DISPLAYSURF.blit(sniperDisp, sniperRect)
+
+        sniperStatsDisp = fontStats.render('Damage: %d' % sniper.attack + '  Speed: %d' % sniper.speed, 1, black)
+        sniperStatsRect = sniperStatsDisp.get_rect()
+        sniperStatsRect.topleft = (1100, 300)
+        DISPLAYSURF.blit(sniperStatsDisp, sniperStatsRect)
+
+        sniperRangDisp = fontStats.render('Range: %d' % sniper.rang, 1, black)
+        sniperRangRect = sniperRangDisp.get_rect()
+        sniperRangRect.topleft = (1100, 315)
+        DISPLAYSURF.blit(sniperRangDisp, sniperRangRect)
+
+        #Information stats
+
 
 def drawQueue():
         if len(queue) > 0:
@@ -177,20 +237,65 @@ def click(mousex, mousey):
 
 def startWave(level):
         # Yellow < Green < Blue < Red
-        if level == 1:
-                queue.append(Yellow(6, 10, 100))
-                queue.append(Yellow(7, 10, 100))
-        elif level == 2:
-                queue.append(Green(8, 10, 100))
-                queue.append(Green(9, 10, 100))
-        elif level == 3:
-                queue.append(Blue(4, 10, 100))
-                queue.append(Blue(5, 10, 100))
-        else:
-                queue.append(Red(1, 10, 100))
-                queue.append(Red(2, 10, 100))
-                queue.append(Red(3, 10, 100))
 
+        if level == 1:
+                queue.append(Yellow(2, 10, 100))
+                queue.append(Yellow(2, 10, 100))
+        elif level == 2:
+                queue.append(Yellow(2, 10, 100))
+                queue.append(Yellow(2, 10, 100))
+                queue.append(Yellow(2, 10, 100))
+                queue.append(Yellow(2, 10, 100))
+        elif level == 3:
+                queue.append(Yellow(2, 10, 100))
+                queue.append(Yellow(2, 10, 100))
+                queue.append(Green(3, 20, 100))
+                queue.append(Green(3, 20, 100))
+        elif level == 4:
+                queue.append(Yellow(2, 10, 100))
+                queue.append(Yellow(2, 10, 100))
+                queue.append(Green(3, 20, 100))
+                queue.append(Green(3, 20, 100))
+                queue.append(Green(3, 20, 100))
+                queue.append(Green(3, 20, 100))
+        elif level == 5:
+                for i in range(0, 5):
+                        queue.append(Green(3, 20, 100))
+                queue.append(Blue(4, 100, 200))
+        elif level == 6:
+                for i in range(0, 5):
+                        queue.append(Green(3, 20, 100))
+                for i in range(0, 5):
+                        queue.append(Blue(4, 100, 200))
+        elif level == 7:
+                for i in range(0, 5):
+                        queue.append(Yellow(2, 10, 100))
+                for i in range(0, 5):
+                        queue.append(Green(3, 20, 100))
+                for i in range(0, 5):
+                        queue.append(Blue(4, 100, 200))
+        elif level == 8:
+                for i in range(0, 7):
+                        queue.append(Yellow(2, 10, 100))
+                for i in range(0, 7):
+                        queue.append(Green(3, 20, 100))
+                for i in range(0, 7):
+                        queue.append(Blue(4, 100, 200))
+        elif level == 9:
+                for i in range(0, 10):
+                        queue.append(Yellow(2, 10, 100))
+                for i in range(0, 10):
+                        queue.append(Green(3, 20, 100))
+                for i in range(0, 10):
+                        queue.append(Blue(4, 100, 200))
+        elif level == 10:
+                for i in range(0, 10):
+                        queue.append(Yellow(2, 10, 100))
+                for i in range(0, 10):
+                        queue.append(Green(3, 20, 100))
+                for i in range(0, 10):
+                        queue.append(Blue(4, 100, 200))
+                queue.append(Red(1, 500, 1000))
 
         
 def placeTower(tower, gameStats):
