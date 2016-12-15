@@ -25,12 +25,12 @@ class Shooter(pygame.sprite.Sprite):
 
         self.name = 'Shooter'
         self.attack = 10
-        self.speed = 1.0
+        self.speed = 0.5
         self.bSpeed = 10
         self.rang = 160
         self.cost = 150
         self.pene = 1
-        self.time = pygame.time.get_ticks() - 1500
+        self.time = pygame.time.get_ticks() - self.speed*1000
 
         s = pygame.Surface((self.rang,self.rang))
         s.set_alpha(10)
@@ -47,7 +47,7 @@ class Shooter(pygame.sprite.Sprite):
         self.rect.y -= self.rang / 2 - 20
 
     def update(self):
-        if pygame.time.get_ticks() - self.time > 1500:
+        if pygame.time.get_ticks() - self.time > self.speed*1000:
             self.time = pygame.time.get_ticks()
             for s in allEnemies:
                 if(checkCollision(self, s)):
@@ -62,12 +62,12 @@ class Bomber(pygame.sprite.Sprite):
 
         self.name = 'Bomber'
         self.attack = 25
-        self.speed = 2.0
+        self.speed = 1
         self.bSpeed = 10
         self.rang = 160
         self.cost = 100
         self.pene = 2
-        self.time = pygame.time.get_ticks() - 1500
+        self.time = pygame.time.get_ticks() - self.speed*1000
 
         s = pygame.Surface((self.rang,self.rang))
         s.set_alpha(10)
@@ -86,7 +86,7 @@ class Bomber(pygame.sprite.Sprite):
 
 
     def update(self):
-        if pygame.time.get_ticks() - self.time > 1500:
+        if pygame.time.get_ticks() - self.time > self.speed*1000:
             self.time = pygame.time.get_ticks()
             for s in allEnemies:
                 if(checkCollision(self, s)):
@@ -106,13 +106,13 @@ class Sniper(pygame.sprite.Sprite):
 
 
         self.name = 'Sniper'
-        self.attack = 20
-        self.speed = 3.0
+        self.attack = 50
+        self.speed = 2
         self.bSpeed = 10
         self.rang = 360
         self.cost = 300
         self.pene = 4
-        self.time = pygame.time.get_ticks() - 1500
+        self.time = pygame.time.get_ticks() - self.speed*1000
 
         s = pygame.Surface((self.rang,self.rang))
         s.set_alpha(10)
@@ -129,7 +129,7 @@ class Sniper(pygame.sprite.Sprite):
         self.rect.y -= self.rang / 2 - 20
 
     def update(self):
-        if pygame.time.get_ticks() - self.time > 1500:
+        if pygame.time.get_ticks() - self.time > self.speed*1000:
             self.time = pygame.time.get_ticks()
             for s in allEnemies:
                 if(checkCollision(self, s)):

@@ -264,21 +264,21 @@ def startWave(level):
     # Yellow < Green < Blue < Red
 
     if level == 1:
-        queue.append(Yellow(2, 100, 10))
-        queue.append(Yellow(2, 100, 10))
+        queue.append(Yellow(2, 50, 10))
+        queue.append(Yellow(2, 50, 10))
     elif level == 2:
-        queue.append(Yellow(2, 100, 10))
-        queue.append(Yellow(2, 100, 10))
-        queue.append(Yellow(2, 100, 10))
-        queue.append(Yellow(2, 100, 10))
+        queue.append(Yellow(2, 50, 10))
+        queue.append(Yellow(2, 50, 10))
+        queue.append(Yellow(2, 50, 10))
+        queue.append(Yellow(2, 50, 10))
     elif level == 3:
-        queue.append(Yellow(2, 100, 10))
-        queue.append(Yellow(2, 100, 10))
-        queue.append(Green(3, 20, 100))
-        queue.append(Green(3, 20, 100))
+        queue.append(Yellow(2, 50, 10))
+        queue.append(Yellow(2, 50, 10))
+        queue.append(Green(3, 100, 100))
+        queue.append(Green(3, 100, 100))
     elif level == 4:
-        queue.append(Yellow(2, 100, 10))
-        queue.append(Yellow(2, 100, 10))
+        queue.append(Yellow(2, 50, 10))
+        queue.append(Yellow(2, 50, 10))
         queue.append(Green(3, 100, 20))
         queue.append(Green(3, 100, 20))
         queue.append(Green(3, 100, 20))
@@ -294,28 +294,28 @@ def startWave(level):
             queue.append(Blue(4, 200, 100))
     elif level == 7:
         for i in range(0, 5):
-            queue.append(Yellow(2, 100, 10))
+            queue.append(Yellow(2, 50, 10))
         for i in range(0, 5):
             queue.append(Green(3, 100, 20))
         for i in range(0, 5):
             queue.append(Blue(4, 200, 100))
     elif level == 8:
         for i in range(0, 7):
-            queue.append(Yellow(2, 100, 10))
+            queue.append(Yellow(2, 50, 10))
         for i in range(0, 7):
             queue.append(Green(3, 100, 20))
         for i in range(0, 7):
             queue.append(Blue(4, 200, 100))
     elif level == 9:
         for i in range(0, 10):
-            queue.append(Yellow(2, 100, 10))
+            queue.append(Yellow(2, 50, 10))
         for i in range(0, 10):
             queue.append(Green(3, 100, 20))
         for i in range(0, 10):
             queue.append(Blue(4, 200, 100))
     elif level == 10:
         for i in range(0, 10):
-            queue.append(Yellow(2, 100, 10))
+            queue.append(Yellow(2, 50, 10))
         for i in range(0, 10):
             queue.append(Green(3, 100, 20))
         for i in range(0, 10):
