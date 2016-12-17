@@ -325,13 +325,16 @@ def startWave(level):
 
 def placeTower(tower, gameStats):
     runIt = True
-
+    theTower = None
     if tower == 7:
         mousex, mousey = 1050, 200
+        theTower = Shooter(1050, 200)
     if tower == 8:
         mousex, mousey = 1050, 120
+        theTower = Bomber(1050, 120)
     if tower == 9:
         mousex, mousey = 1050, 280
+        theTower = Sniper(1050, 280)
     mousex += 20
     mousey += 20
     while runIt:
@@ -350,6 +353,12 @@ def placeTower(tower, gameStats):
                 mouseClick = True
         img = textures[tower]
         screen.blit(img, (mousex - 20, mousey - 20))
+
+        s = pygame.Surface((theTower.rang, theTower.rang))
+        s.set_alpha(10)
+        s.fill((255,255,255))
+        screen.blit(s, (mousex - theTower.rang/2, mousey - theTower.rang/2))
+
         allEnemies.update()
         allEnemies.draw(screen)
         towers.update()

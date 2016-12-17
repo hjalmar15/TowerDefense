@@ -109,7 +109,7 @@ class Sniper(pygame.sprite.Sprite):
         self.attack = 50
         self.speed = 2
         self.bSpeed = 10
-        self.rang = 360
+        self.rang = 400
         self.cost = 300
         self.pene = 4
         self.time = pygame.time.get_ticks() - self.speed*1000
