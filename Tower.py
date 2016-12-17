@@ -95,9 +95,6 @@ class Bomber(pygame.sprite.Sprite):
                     break
 
 
-    def shoot(self, enemies):
-        pass
-
 
 class Sniper(pygame.sprite.Sprite):
     def __init__(self, row, col):
@@ -162,6 +159,7 @@ class Bullet(pygame.sprite.Sprite):
         self.rect.x = startX
         self.rect.y = startY
         self.bullet_vector = Move(targetX, targetY, startX, startY, speed)
+
     def update(self):
         if not pygame.sprite.collide_rect(self.obj, self):
             self.kill()
