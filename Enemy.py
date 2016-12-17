@@ -74,7 +74,7 @@ class Yellow(pygame.sprite.Sprite):
                     self.kill()
                     self.remove()
                     gameStats[0] += self.reward
-                    gameStats[3] += self.maxHealth
+                    gameStats[3] += self.maxHealth/2
 
 
 class Green(pygame.sprite.Sprite):
@@ -148,7 +148,7 @@ class Green(pygame.sprite.Sprite):
                     self.kill()
                     self.remove()
                     gameStats[0] += self.reward
-                    gameStats[3] += self.maxHealth
+                    gameStats[3] += self.maxHealth/2
 
 
 class Blue(pygame.sprite.Sprite):
@@ -224,7 +224,7 @@ class Blue(pygame.sprite.Sprite):
                     self.remove()
                     allEnemies.remove(self)
                     gameStats[0] += self.reward
-                    gameStats[3] += self.maxHealth
+                    gameStats[3] += self.maxHealth/2
 
 class Red(pygame.sprite.Sprite):
     def __init__(self, speed, health, reward):
@@ -299,4 +299,4 @@ class Red(pygame.sprite.Sprite):
                     self.remove()
                     allEnemies.remove(self)
                     gameStats[0] += self.reward
-                    gameStats[3] += self.maxHealth
+                    gameStats[3] += self.maxHealth/2
