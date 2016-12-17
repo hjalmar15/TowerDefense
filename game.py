@@ -15,6 +15,7 @@ red = (255, 0, 0)
 clock = pygame.time.Clock()
 
 screen = pygame.display.set_mode((display_width, display_height))
+pygame.display.set_caption('Tower Defense: Angry Heads')
 
 towers = pygame.sprite.Group()
 
