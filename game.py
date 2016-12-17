@@ -121,7 +121,7 @@ def theGame():
             if messageTime > 0:
                 Disp = fontMin.render(message, 1, black)
                 Rect = Disp.get_rect()
-                Rect.topleft = (1075, 500)
+                Rect.topleft = (1050, 500)
                 DISPLAYSURF.blit(Disp, Rect)
                 messageTime -= 1
 
@@ -348,15 +348,15 @@ def startWave(level):
     else:
         red = level - 10
 
-        if level < 15:
+        if level < 10 and level < 15:
             multH = 2
             multS = 1.005
-        if level < 20:
+        if level <= 15 and level < 20:
             multH = 3
-            multS = 1.01
-        else:
-            multH = 4
             multS = 1.02
+        if level <= 20:
+            multH = 4
+            multS = 1.1
 
         for i in range(level):
             queue.append(Enemy(2*multS, 50*multH, 10, 'Yellow'))
