@@ -146,7 +146,8 @@ def theGame():
             if (whatClicked == "start" or pressed[pygame.K_SPACE]):
                 gameStats[1] += 1
                 gameStats[0] += 100
-                startWave(gameStats[1])
+                if gameStats[1] != 10:
+                    startWave(gameStats[1])
 
         if gameStats[2] == 0:
             gameOver()
@@ -193,7 +194,7 @@ def drawStats(gameStats):
     bomberRect.topleft = (1100, 110)
     DISPLAYSURF.blit(bomberDisp, bomberRect)
 
-    bomberStatsDisp = fontStats.render('Damage: %d' % bomber.attack + '  Speed: %d' % bomber.speed, 1, black)
+    bomberStatsDisp = fontStats.render('Damage: %d' % bomber.attack + '  Speed: %d' % (bomber.speed*2), 1, black)
     bomberStatsRect = bomberStatsDisp.get_rect()
     bomberStatsRect.topleft = (1100, 130)
     DISPLAYSURF.blit(bomberStatsDisp, bomberStatsRect)
@@ -209,7 +210,7 @@ def drawStats(gameStats):
     shooterRect.topleft = (1100, 200)
     DISPLAYSURF.blit(shooterDisp, shooterRect)
 
-    shooterStatsDisp = fontStats.render('Damage: %d' % shooter.attack + '  Speed: %d' % shooter.speed, 1, black)
+    shooterStatsDisp = fontStats.render('Damage: %d' % shooter.attack + '  Speed: %d' % (shooter.speed*2), 1, black)
     shooterStatsRect = shooterStatsDisp.get_rect()
     shooterStatsRect.topleft = (1100, 220)
     DISPLAYSURF.blit(shooterStatsDisp, shooterStatsRect)
@@ -225,7 +226,7 @@ def drawStats(gameStats):
     sniperRect.topleft = (1100, 280)
     DISPLAYSURF.blit(sniperDisp, sniperRect)
 
-    sniperStatsDisp = fontStats.render('Damage: %d' % sniper.attack + '  Speed: %d' % sniper.speed, 1, black)
+    sniperStatsDisp = fontStats.render('Damage: %d' % sniper.attack + '  Speed: %d' % (sniper.speed*2), 1, black)
     sniperStatsRect = sniperStatsDisp.get_rect()
     sniperStatsRect.topleft = (1100, 300)
     DISPLAYSURF.blit(sniperStatsDisp, sniperStatsRect)
@@ -332,23 +333,23 @@ def startWave(level):
         red = level - 10
 
         if level < 15:
-            multH = 4
-            multS = 1.5
+            multH = 2
+            multS = 1.005
         if level < 20:
-            multH = 5
-            multS = 2
+            multH = 3
+            multS = 1.01
         if level < 25:
-            multH = 10
-            multS = 3
+            multH = 4
+            multS = 1.02
 
         for i in range(level):
-            queue.append(Yellow(3*multS, 50*multH, 10))
+            queue.append(Yellow(2*multS, 50*multH, 10))
         for i in range(level):
-            queue.append(Green(4*multS, 100*multH, 20))
+            queue.append(Green(3*multS, 100*multH, 20))
         for i in range(level):
-            queue.append(Blue(5*multS, 200*multH, 100))
+            queue.append(Blue(4*multS, 200*multH, 100))
         for i in range(red):
-            queue.append(Red(2*multS, 5000*multH, 100))
+            queue.append(Red(1*multS, 5000*multH, 100))
 
 
 def showNewEnemy(EnemyObj):

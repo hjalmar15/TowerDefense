@@ -26,7 +26,7 @@ class Shooter(pygame.sprite.Sprite):
         self.attack = 10
         self.speed = 1
         self.bSpeed = 10
-        self.rang = 160
+        self.rang = 200
         self.cost = 150
         self.pene = 1
         self.time = pygame.time.get_ticks() - self.speed*1000
@@ -60,10 +60,10 @@ class Bomber(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
 
         self.name = 'Bomber'
-        self.attack = 25
+        self.attack = 35
         self.speed = 1
         self.bSpeed = 10
-        self.rang = 160
+        self.rang = 200
         self.cost = 100
         self.pene = 2
         self.time = pygame.time.get_ticks() - self.speed*1000
@@ -101,8 +101,8 @@ class Sniper(pygame.sprite.Sprite):
 
 
         self.name = 'Sniper'
-        self.attack = 50
-        self.speed = 2
+        self.attack = 150
+        self.speed = 1.5
         self.bSpeed = 10
         self.rang = 400
         self.cost = 300
