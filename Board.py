@@ -61,7 +61,7 @@ textures = {
         TITLE: pygame.image.load('Sprites/Title.png'),
         START: pygame.image.load('Sprites/Start.png'),
         TOWERS: pygame.image.load('Sprites/Towers.png'),
-        WIN: pygame.image.load('Sprites/youWin.gif'),
+        WIN: pygame.image.load('Sprites/youWin.png'),
         SHOOTERSHOP: pygame.image.load('Sprites/Shooter.png'),
         BOMBERSHOP: pygame.image.load('Sprites/Bomber.png'),
         SNIPERSHOP: pygame.image.load('Sprites/Sniper.png'),
