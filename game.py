@@ -1,5 +1,3 @@
-import pygame
-import time
 from Tower import *
 from Enemy import *
 from Board import *

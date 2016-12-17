@@ -1,4 +1,3 @@
-import pygame
 from Board import *
 PATH = getEnemyPath()
 # Yellow < Green < Blue < Red

@@ -1,4 +1,3 @@
-import pygame
 from Board import *
 import math
 
@@ -48,9 +47,9 @@ class Shooter(pygame.sprite.Sprite):
 
     def update(self):
         if pygame.time.get_ticks() - self.time > self.speed*1000:
-            self.time = pygame.time.get_ticks()
             for s in allEnemies:
                 if(checkCollision(self, s)):
+                    self.time = pygame.time.get_ticks()
                     #startX, startY, targetX, targetY, attack, range, speed, penet
                     allBullets.add(Bullet(self,self.rect.x + self.rang / 2 - 20, self.rect.y + self.rang / 2 - 20, s.rect.x, s.rect.y, self.attack, self.rang, self.bSpeed, self.pene))
 
@@ -87,16 +86,12 @@ class Bomber(pygame.sprite.Sprite):
 
     def update(self):
         if pygame.time.get_ticks() - self.time > self.speed*1000:
-            self.time = pygame.time.get_ticks()
             for s in allEnemies:
                 if(checkCollision(self, s)):
+                    self.time = pygame.time.get_ticks()
                     #startX, startY, targetX, targetY, attack, range, speed, penet
                     allBullets.add(Bullet(self,self.rect.x + self.rang / 2 - 20, self.rect.y + self.rang / 2 - 20, s.rect.x, s.rect.y, self.attack, self.rang, self.bSpeed, self.pene))
                     break
-
-
-    def shoot(self, enemies):
-        pass
 
 
 class Sniper(pygame.sprite.Sprite):
@@ -130,9 +125,9 @@ class Sniper(pygame.sprite.Sprite):
 
     def update(self):
         if pygame.time.get_ticks() - self.time > self.speed*1000:
-            self.time = pygame.time.get_ticks()
             for s in allEnemies:
                 if(checkCollision(self, s)):
+                    self.time = pygame.time.get_ticks()
                     #startX, startY, targetX, targetY, attack, range, speed, penet
                     allBullets.add(Bullet(self,self.rect.x + self.rang / 2 - 20, self.rect.y + self.rang / 2 - 20, s.rect.x, s.rect.y, self.attack, self.rang, self.bSpeed, self.pene))
                     break
@@ -162,6 +157,7 @@ class Bullet(pygame.sprite.Sprite):
         self.rect.x = startX
         self.rect.y = startY
         self.bullet_vector = Move(targetX, targetY, startX, startY, speed)
+
     def update(self):
         if not pygame.sprite.collide_rect(self.obj, self):
             self.kill()

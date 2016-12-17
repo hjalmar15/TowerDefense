@@ -1,5 +1,4 @@
-import pygame, sys
-from pygame.locals import *
+import pygame
 
 allBullets = pygame.sprite.Group()
 allEnemies = pygame.sprite.Group()
@@ -111,8 +110,6 @@ def drawBoard():
                         if (tilemap[row][column] > 6 and tilemap[row][column] < 10):
                                 DISPLAYSURF.blit(textures[tilemap[row][column]], (column*TILESIZE, row*TILESIZE, TILESIZE, TILESIZE))
 
-                        #draw tilemap as images
-                        #DISPLAYSURF.blit(textures[tilemap[row][column]], (column*TILESIZE, row*TILESIZE, TILESIZE, TILESIZE))
 
 def drawButtons():
          DISPLAYSURF.blit(textures[4], (1050, 20))
