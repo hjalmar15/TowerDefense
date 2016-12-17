@@ -445,7 +445,6 @@ def placeTower(tower, gameStats):
         allEnemies.update()
         allEnemies.draw(screen)
         towers.update()
-        towers.draw(screen)
         allBullets.update()
         allBullets.draw(screen)
 
