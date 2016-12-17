@@ -111,6 +111,7 @@ def theGame():
         if messageTime == 0:
             message = "Mouse over enemy for HP"
             messageTime = 5
+
         if gameStats[1] == 10 and len(allEnemies) == 0:
             youWin()
             gameStats[1] += 1
@@ -158,8 +159,7 @@ def theGame():
             if (whatClicked == "start" or pressed[pygame.K_SPACE]) and (gameStats[1] < 10 or gameStats[1] > 10):
                 gameStats[1] += 1
                 gameStats[0] += 100
-                if gameStats[1] != 10:
-                    startWave(gameStats[1])
+                startWave(gameStats[1])
 
         if gameStats[2] == 0:
             gameOver()
