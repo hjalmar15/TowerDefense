@@ -23,7 +23,7 @@ class Shooter(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
 
         self.name = 'Shooter'
-        self.attack = 10
+        self.attack = 15
         self.speed = 1
         self.bSpeed = 10
         self.rang = 200
