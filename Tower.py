@@ -1,4 +1,3 @@
-import pygame
 from Board import *
 import math
 
@@ -94,9 +93,6 @@ class Bomber(pygame.sprite.Sprite):
                     allBullets.add(Bullet(self,self.rect.x + self.rang / 2 - 20, self.rect.y + self.rang / 2 - 20, s.rect.x, s.rect.y, self.attack, self.rang, self.bSpeed, self.pene))
                     break
 
-    def shoot(self, enemies):
-        pass
-
 
 class Sniper(pygame.sprite.Sprite):
     def __init__(self, row, col):
@@ -161,6 +157,7 @@ class Bullet(pygame.sprite.Sprite):
         self.rect.x = startX
         self.rect.y = startY
         self.bullet_vector = Move(targetX, targetY, startX, startY, speed)
+
     def update(self):
         if not pygame.sprite.collide_rect(self.obj, self):
             self.kill()
