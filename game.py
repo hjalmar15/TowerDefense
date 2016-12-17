@@ -155,7 +155,7 @@ def theGame():
                 else:
                         message = "Not enough money"
                         messageTime = 80
-            if (whatClicked == "start" or pressed[pygame.K_SPACE]):
+            if (whatClicked == "start" or pressed[pygame.K_SPACE]) and (gameStats[1] < 10 or gameStats[1] > 10):
                 gameStats[1] += 1
                 gameStats[0] += 100
                 if gameStats[1] != 10:
@@ -354,7 +354,7 @@ def startWave(level):
         if level < 20:
             multH = 3
             multS = 1.01
-        if level < 25:
+        else:
             multH = 4
             multS = 1.02
 
