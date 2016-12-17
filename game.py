@@ -335,14 +335,25 @@ def startWave(level):
         queue.append(Red(1, 5000, 500))
     else:
         red = level - 10
+
+        if level < 15:
+            multH = 4
+            multS = 1.5
+        if level < 20:
+            multH = 5
+            multS = 2
+        if level < 25:
+            multH = 10
+            multS = 3
+
         for i in range(level):
-            queue.append(Yellow(3, 200, 10))
+            queue.append(Yellow(3*multS, 50*multH, 10))
         for i in range(level):
-            queue.append(Green(4, 400, 20))
+            queue.append(Green(4*multS, 100*multH, 20))
         for i in range(level):
-            queue.append(Blue(5, 800, 100))
+            queue.append(Blue(5*multS, 200*multH, 100))
         for i in range(red):
-            queue.append(Red(2, 20000, 100))
+            queue.append(Red(2*multS, 5000*multH, 100))
 
 
 def showNewEnemy(EnemyObj):
