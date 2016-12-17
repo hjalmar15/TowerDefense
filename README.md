@@ -32,7 +32,7 @@ There are three different towers which all have their unique attributes:
         - Press D to buy a Sniper tower
         - Press Esc to cancel tower purchase
         - Press Spacebar to start next wave
-			+ It is possible to start multiple waves at the same time
+			- It is possible to start multiple waves at the same time
 
 ### Requirements:
 - Python 3
