@@ -107,15 +107,10 @@ def theGame():
                 pressed = pygame.key.get_pressed()
         if gameStats[1] == 10 and len(allEnemies) == 0:
             youWin()
-            runWin = True
-            while True:
-                for event in pygame.event.get():
-                    if event.type == pygame.QUIT:
-                        pygame.quit()
-                        quit()
-                    elif event.type == pygame.MOUSEBUTTONUP:
-                        introMenu()
-                        runWin = False
+            gameStats[1] += 1
+            gameStats[0] += 100
+            startWave(gameStats[1])
+
         if len(message) > 0:
             if messageTime > 0:
                 Disp = fontMin.render(message, 1, black)
@@ -148,7 +143,7 @@ def theGame():
                 else:
                         message = "Not enough money"
                         messageTime = 80
-            if (whatClicked == "start" or pressed[pygame.K_SPACE]) and gameStats[1] < 10:
+            if (whatClicked == "start" or pressed[pygame.K_SPACE]):
                 gameStats[1] += 1
                 gameStats[0] += 100
                 startWave(gameStats[1])
@@ -332,7 +327,29 @@ def startWave(level):
             queue.append(Green(3, 100, 20))
         for i in range(0, 10):
             queue.append(Blue(4, 200, 100))
-        queue.append(Red(1, 1000, 500))
+        queue.append(Red(1, 5000, 500))
+    else:
+        red = level - 10
+
+        if level < 15:
+            multH = 4
+            multS = 1.5
+        if level < 20:
+            multH = 5
+            multS = 2
+        if level < 25:
+            multH = 10
+            multS = 3
+
+        for i in range(level):
+            queue.append(Yellow(3*multS, 50*multH, 10))
+        for i in range(level):
+            queue.append(Green(4*multS, 100*multH, 20))
+        for i in range(level):
+            queue.append(Blue(5*multS, 200*multH, 100))
+        for i in range(red):
+            queue.append(Red(2*multS, 5000*multH, 100))
+
 
 def showNewEnemy(EnemyObj):
     runNewEnemy = True
@@ -461,8 +478,8 @@ def youWin():
                 pygame.quit()
                 quit()
             elif event.type == pygame.MOUSEBUTTONUP:
-                pygame.quit()
-                quit()
+                runWin = False
+
 
 
 def gameOver():
