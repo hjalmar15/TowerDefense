@@ -1,112 +1,36 @@
 from Board import *
 import math
 
-class Tower(object):
-    def __init__(self, row, col, board):
-        self.row = row
-        self.col = col
-        self.board = board
-        self.name = 'Tower'
-        self.attack = 0
-        self.speed = 1.0
-        self.rang = 0
-        self.cost = 0
-        self.pene = 0
-        self.img = ''
-
-
-
-class Shooter(pygame.sprite.Sprite):
-
-    def __init__(self, row, col):
-        #super(shooter, self).__init__(self, row, col, board)
-        pygame.sprite.Sprite.__init__(self)
-
-        self.name = 'Shooter'
-        self.attack = 30
-        self.speed = 1
-        self.bSpeed = 10
-        self.rang = 200
-        self.cost = 150
-        self.pene = 1
-        self.time = pygame.time.get_ticks() - self.speed*1000
-
-        s = pygame.Surface((self.rang,self.rang))
-        s.set_alpha(10)
-        s.fill((255,255,255))
-        self.image = s
-
-        row *= 40
-        col *= 40
-
-        self.rect = self.image.get_rect()
-        self.rect.x = col
-        self.rect.y = row
-        self.rect.x -= self.rang / 2 - 20
-        self.rect.y -= self.rang / 2 - 20
-
-    def update(self):
-        if pygame.time.get_ticks() - self.time > self.speed*1000:
-            for s in allEnemies:
-                if(checkCollision(self, s)):
-                    self.time = pygame.time.get_ticks()
-                    #startX, startY, targetX, targetY, attack, range, speed, penet
-                    allBullets.add(Bullet(self,self.rect.x + self.rang / 2 - 20, self.rect.y + self.rang / 2 - 20, s.rect.x, s.rect.y, self.attack, self.rang, self.bSpeed, self.pene))
-
-
-class Bomber(pygame.sprite.Sprite):
-    def __init__(self, row, col):
-        #super(bomber, self).__init__(self, row, col, board)
-        pygame.sprite.Sprite.__init__(self)
-
-        self.name = 'Bomber'
-        self.attack = 35
-        self.speed = 1
-        self.bSpeed = 10
-        self.rang = 200
-        self.cost = 100
-        self.pene = 2
-        self.time = pygame.time.get_ticks() - self.speed*1000
-
-        s = pygame.Surface((self.rang,self.rang))
-        s.set_alpha(10)
-        s.fill((255,255,255))
-        self.image = s
-
-        row *= 40
-        col *= 40
-
-        self.rect = self.image.get_rect()
-        self.rect.x = col
-        self.rect.y = row
-        self.rect.x -= self.rang / 2 - 20
-        self.rect.y -= self.rang / 2 - 20
-
-
-
-    def update(self):
-        if pygame.time.get_ticks() - self.time > self.speed*1000:
-            for s in allEnemies:
-                if(checkCollision(self, s)):
-                    self.time = pygame.time.get_ticks()
-                    #startX, startY, targetX, targetY, attack, range, speed, penet
-                    allBullets.add(Bullet(self,self.rect.x + self.rang / 2 - 20, self.rect.y + self.rang / 2 - 20, s.rect.x, s.rect.y, self.attack, self.rang, self.bSpeed, self.pene))
-                    break
-
-
-class Sniper(pygame.sprite.Sprite):
-    def __init__(self, row, col):
+class Tower(pygame.sprite.Sprite):
+    def __init__(self, row, col, type):
         #super(sniper, self).__init__(self, row, col, board)
         pygame.sprite.Sprite.__init__(self)
 
+        if type == 'Sniper':
+            self.name = 'Sniper'
+            self.attack = 35
+            self.speed = 1.5
+            self.bSpeed = 10
+            self.rang = 400
+            self.cost = 300
+            self.pene = 4
+        elif type == 'Shooter':
+            self.name = 'Shooter'
+            self.attack = 30
+            self.speed = 1
+            self.bSpeed = 10
+            self.rang = 200
+            self.cost = 150
+            self.pene = 1
+        elif type == 'Bomber':
+            self.name = 'Bomber'
+            self.attack = 35
+            self.speed = 1
+            self.bSpeed = 10
+            self.rang = 200
+            self.cost = 100
+            self.pene = 2
 
-        self.name = 'Sniper'
-        self.attack = 35
-        self.speed = 1.5
-        self.bSpeed = 10
-        self.rang = 400
-        self.cost = 300
-        self.pene = 4
         self.time = pygame.time.get_ticks() - self.speed*1000
 
         s = pygame.Surface((self.rang,self.rang))

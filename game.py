@@ -134,7 +134,7 @@ def theGame():
         if mouseClicked or keyPressed:
             whatClicked = click(mousex, mousey)
             if whatClicked == 'placeSh' or pressed[pygame.K_s]:
-                shooter = Shooter(1050, 200)
+                shooter = Tower(1050, 200, 'Shooter')
                 if gameStats[0] >= shooter.cost:
                         placeTower(7, gameStats)
                 else:
@@ -142,14 +142,14 @@ def theGame():
                         messageTime = 80
 
             if whatClicked == 'placeB' or pressed[pygame.K_a]:
-                bomber = Bomber(1050, 120)
+                bomber = Tower(1050, 120, 'Bomber')
                 if gameStats[0] >= bomber.cost:
                         placeTower(8, gameStats)
                 else:
                         message = "Not enough money"
                         messageTime = 80
             if whatClicked == 'placeSn' or pressed[pygame.K_d]:
-                sniper = Sniper(1050, 280)
+                sniper = Tower(1050, 280, 'Sniper')
                 if gameStats[0] >= sniper.cost:
                         placeTower(9, gameStats)
                 else:
@@ -196,9 +196,9 @@ def drawStats(gameStats):
     DISPLAYSURF.blit(scoreDisp, scoreRect)
 
     # Tower stats
-    shooter = Shooter(1050, 200)
-    bomber = Bomber(1050, 110)
-    sniper = Sniper(1050, 280)
+    shooter = Tower(1050, 200,'Shooter')
+    bomber = Tower(1050, 110,'Bomber')
+    sniper = Tower(1050, 280,'Sniper')
 
     # Bomber
     bomberDisp = fontMin.render('Bomber', 1, black)
@@ -403,13 +403,13 @@ def placeTower(tower, gameStats):
     theTower = None
     if tower == 7:
         mousex, mousey = 1050, 200
-        theTower = Shooter(1050, 200)
+        theTower = Tower(1050, 200,'Shooter')
     if tower == 8:
         mousex, mousey = 1050, 120
-        theTower = Bomber(1050, 120)
+        theTower = Tower(1050, 120, 'Bomber')
     if tower == 9:
         mousex, mousey = 1050, 280
-        theTower = Sniper(1050, 280)
+        theTower = Tower(1050, 280, 'Sniper')
     mousex += 20
     mousey += 20
     while runIt:
@@ -456,17 +456,17 @@ def placeTower(tower, gameStats):
             if tilemap[y1][x1] == 1:
 
                 if (tower == 7):
-                    shooter = Shooter(y1, x1)
+                    shooter = Tower(y1, x1,'Sniper')
                     gameStats[0] -= shooter.cost
 
                     towers.add(shooter)
                 if (tower == 8):
-                    bomber = Bomber(y1, x1)
+                    bomber = Tower(y1, x1, 'Bomber')
                     gameStats[0] -= bomber.cost
 
                     towers.add(bomber)
                 if (tower == 9):
-                    sniper = Sniper(y1, x1)
+                    sniper = Tower(y1, x1, 'Sniper')
                     gameStats[0] -= sniper.cost
 
                     towers.add(sniper)

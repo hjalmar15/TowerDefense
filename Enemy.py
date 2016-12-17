@@ -7,26 +7,24 @@ class Enemy(pygame.sprite.Sprite):
        # Call the parent class (Sprite) constructor
        pygame.sprite.Sprite.__init__(self)
        self.type = type
+
        if self.type == 'Red':
            self.name = 'Red'
            self.description = 'King Angry Head himself has come to destroy your kingdom!'
            icon = pygame.image.load('Sprites/Red.png')
-           self.image = icon
        elif self.type == 'Blue':
            self.name = 'Blue'
            self.description = 'Blue is a soldier in the angry head village that was sent by King Angry Head to destroy your kingdom!'
            icon = pygame.image.load('Sprites/Blue.png')
-           self.image = icon
        elif self.type == 'Green':
            self.name = 'Green'
            self.description = 'Green is a civilian in the angry head village that was sent by King Angry Head to destroy your kingdom!'
            icon = pygame.image.load('Sprites/Green.png')
-           self.image = icon
        elif self.type == 'Yellow':
            self.name ='Yellow'
            self.description =  'Yellow is a farmer in the angry head village that was sent by King Angry Head to destroy your kingdom'
            icon = pygame.image.load('Sprites/Yellow.png')
-           self.image = icon
+       self.image = icon
        self.count = 1
        self.speed = speed
        self.maxHealth = health
