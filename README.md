@@ -25,7 +25,7 @@ There are three different towers which all have their unique attributes:
 # Ath skipta um mynd af réttum stats!!!!!
 
 
-### Keyboard shortcuts:
+### Keyboard shortcuts and useful information:
 It is possible to use keyboard shortcuts to buy towers and start next wave
 - Press A to buy a Bomber tower
 - Press S to buy a Shooter tower
@@ -33,6 +33,7 @@ It is possible to use keyboard shortcuts to buy towers and start next wave
 - Press Esc to cancel tower purchase
 - Press Spacebar to start next wave
 	- It is possible to start multiple waves at the same time
+- It is possible to see creep health by hovering over it with the mouse. Starting health and remaining health appears on the right of the screen
 
 ### Requirements:
 - Python 3
