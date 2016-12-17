@@ -349,10 +349,10 @@ def startWave(level):
         red = level - 10
 
         if level > 10 and level < 15:
-            multH = 2
+            multH = 1.5
             multS = 1.01
         if level >= 15 and level < 20:
-            multH = 3
+            multH = 2
             multS = 1.1
         if level >= 20:
             multH = 4
