@@ -40,6 +40,11 @@ SHOOTERSHOP = 12
 BOMBERSHOP = 13
 SNIPERSHOP = 14
 GAMEOVER = 15
+NEWENEMYDISPLAY = 16
+YELLOWE = 17
+GREENE = 18
+BLUEE = 19
+REDE = 20
 
 colors = {
         PATH: BROWN,
@@ -62,7 +67,12 @@ textures = {
         SHOOTERSHOP: pygame.image.load('Sprites/ShooterShop.png'),
         BOMBERSHOP: pygame.image.load('Sprites/BomberShop.png'),
         SNIPERSHOP: pygame.image.load('Sprites/SniperShop.png'),
-        GAMEOVER: pygame.image.load('Sprites/GameOver.png')
+        GAMEOVER: pygame.image.load('Sprites/GameOver.png'),
+        NEWENEMYDISPLAY: pygame.image.load('Sprites/NewEnemyDisplay.png'),
+        YELLOWE: pygame.image.load('Sprites/Yellow.png'),
+        GREENE: pygame.image.load('Sprites/Green.png'),
+        BLUEE: pygame.image.load('Sprites/Blue.png'),
+        REDE: pygame.image.load('Sprites/Red.png')
         }
 
 tilemap = [

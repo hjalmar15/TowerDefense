@@ -268,6 +268,7 @@ def startWave(level):
     # Yellow < Green < Blue < Red
 
     if level == 1:
+        showNewEnemy(Yellow(2, 50, 10))
         queue.append(Yellow(2, 50, 10))
         queue.append(Yellow(2, 50, 10))
     elif level == 2:
@@ -276,6 +277,7 @@ def startWave(level):
         queue.append(Yellow(2, 50, 10))
         queue.append(Yellow(2, 50, 10))
     elif level == 3:
+        showNewEnemy(Green(3, 100, 100))
         queue.append(Yellow(2, 50, 10))
         queue.append(Yellow(2, 50, 10))
         queue.append(Green(3, 100, 100))
@@ -288,6 +290,7 @@ def startWave(level):
         queue.append(Green(3, 100, 20))
         queue.append(Green(3, 100, 20))
     elif level == 5:
+        showNewEnemy(Blue(4, 200, 100))
         for i in range(0, 5):
             queue.append(Green(3, 100, 20))
         queue.append(Blue(4, 200, 100))
@@ -318,6 +321,7 @@ def startWave(level):
         for i in range(0, 10):
             queue.append(Blue(4, 200, 100))
     elif level == 10:
+        showNewEnemy(Red(1, 1000, 500))
         for i in range(0, 10):
             queue.append(Yellow(2, 50, 10))
         for i in range(0, 10):
@@ -325,6 +329,35 @@ def startWave(level):
         for i in range(0, 10):
             queue.append(Blue(4, 200, 100))
         queue.append(Red(1, 1000, 500))
+
+def showNewEnemy(EnemyObj):
+    runNewEnemy = True
+    screen.blit(textures[16], (220, 250))
+    enemyObjDesc = fontStats.render('%s' % EnemyObj.description, 1, white)
+    enemyObjRect = enemyObjDesc.get_rect()
+    enemyObjRect.topleft = (230, 300)
+    screen.blit(enemyObjDesc, enemyObjRect)
+    if EnemyObj.name == 'Yellow':
+        screen.blit(textures[17], (320, 340))
+    elif EnemyObj.name == 'Green':
+        screen.blit(textures[18], (320, 340))
+    elif EnemyObj.name == 'Blue':
+        screen.blit(textures[19], (320, 340))
+    else:
+        screen.blit(textures[20], (320, 340))
+    enemyStat = fontStats.render('Health: %d' % EnemyObj.maxHealth + '   Speed: %d' % EnemyObj.speed + '   Reward: %d' % EnemyObj.reward, 1, white)
+    enemyRect = enemyStat.get_rect()
+    enemyRect.topleft = (400, 350)
+    screen.blit(enemyStat, enemyRect)
+
+    pygame.display.flip()
+    while runNewEnemy:
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+                quit()
+            elif event.type == MOUSEBUTTONUP:
+                runNewEnemy = False
 
 
 def placeTower(tower, gameStats):

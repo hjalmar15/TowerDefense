@@ -8,6 +8,7 @@ class Yellow(pygame.sprite.Sprite):
     def __init__(self, speed, health, reward):
         # Call the parent class (Sprite) constructor
         pygame.sprite.Sprite.__init__(self)
+        self.name = 'Yellow'
         self.count = 1
         self.speed = speed
         self.maxHealth = health
@@ -81,6 +82,7 @@ class Green(pygame.sprite.Sprite):
     def __init__(self, speed, health, reward):
         # Call the parent class (Sprite) constructor
         pygame.sprite.Sprite.__init__(self)
+        self.name = 'Green'
         self.count = 1
         self.speed = speed
         self.maxHealth = health
@@ -154,6 +156,7 @@ class Blue(pygame.sprite.Sprite):
     def __init__(self, speed, health, reward):
         # Call the parent class (Sprite) constructor
         pygame.sprite.Sprite.__init__(self)
+        self.name = 'Blue'
         self.count = 1
         self.speed = speed
         self.maxHealth = health
@@ -227,6 +230,7 @@ class Red(pygame.sprite.Sprite):
     def __init__(self, speed, health, reward):
        # Call the parent class (Sprite) constructor
        pygame.sprite.Sprite.__init__(self)
+       self.name = 'Red'
        self.count = 1
        self.speed = speed
        self.maxHealth = health
