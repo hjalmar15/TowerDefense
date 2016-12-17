@@ -101,7 +101,7 @@ class Sniper(pygame.sprite.Sprite):
 
 
         self.name = 'Sniper'
-        self.attack = 150
+        self.attack = 75
         self.speed = 1.5
         self.bSpeed = 10
         self.rang = 400
