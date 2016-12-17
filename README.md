@@ -15,14 +15,10 @@ For each creep you kill you get a certain score and reward, which varies between
 You also get a reward for each wave that starts. You can then use the rewards to buy towers.
 There are three different towers which all have their unique attributes:
 - Bomber: Medium speed, damage and range
-- Shooter: High speed, low damage and range
+- Shooter: High speed, low damage and range. Shoots all creeps in range simultaneously.
 - Sniper: Slow speed, high damage and range but expensive
 
-# Ath skipta um mynd af réttum stats!!!!!
-
-[![Gameplay.png](https://s27.postimg.org/3jo3a7p9f/Gameplay.png)](https://postimg.org/image/7sstcdsin/)
-
-# Ath skipta um mynd af réttum stats!!!!!
+[![stat.png](https://s30.postimg.org/4l1u79f5d/stat.png)](https://postimg.org/image/5akmjmfot/)
 
 
 ### Keyboard shortcuts and useful information:
