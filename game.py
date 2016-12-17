@@ -107,15 +107,10 @@ def theGame():
                 pressed = pygame.key.get_pressed()
         if gameStats[1] == 10 and len(allEnemies) == 0:
             youWin()
-            runWin = True
-            while True:
-                for event in pygame.event.get():
-                    if event.type == pygame.QUIT:
-                        pygame.quit()
-                        quit()
-                    elif event.type == pygame.MOUSEBUTTONUP:
-                        introMenu()
-                        runWin = False
+            gameStats[1] += 1
+            gameStats[0] += 100
+            startWave(gameStats[1])
+
         if len(message) > 0:
             if messageTime > 0:
                 Disp = fontMin.render(message, 1, black)
@@ -148,7 +143,7 @@ def theGame():
                 else:
                         message = "Not enough money"
                         messageTime = 80
-            if (whatClicked == "start" or pressed[pygame.K_SPACE]) and gameStats[1] < 10:
+            if (whatClicked == "start" or pressed[pygame.K_SPACE]):
                 gameStats[1] += 1
                 gameStats[0] += 100
                 startWave(gameStats[1])
@@ -472,8 +467,8 @@ def youWin():
                 pygame.quit()
                 quit()
             elif event.type == pygame.MOUSEBUTTONUP:
-                pygame.quit()
-                quit()
+                runWin = False
+
 
 
 def gameOver():
