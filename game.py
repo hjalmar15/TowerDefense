@@ -284,67 +284,67 @@ def startWave(level):
     # Yellow < Green < Blue < Red
 
     if level == 1:
-        showNewEnemy(Enemy(3, 50, 10,'Yellow'))
-        queue.append(Enemy(3, 50, 10,'Yellow'))
-        queue.append(Enemy(3, 50, 10,'Yellow'))
+        showNewEnemy(Enemy(3, 100, 10,'Yellow'))
+        queue.append(Enemy(3, 100, 10,'Yellow'))
+        queue.append(Enemy(3, 100, 10,'Yellow'))
     elif level == 2:
-        queue.append(Enemy(3, 50, 10,'Yellow'))
-        queue.append(Enemy(3, 50, 10,'Yellow'))
-        queue.append(Enemy(3, 50, 10,'Yellow'))
-        queue.append(Enemy(3, 50, 10,'Yellow'))
+        queue.append(Enemy(3, 100, 10,'Yellow'))
+        queue.append(Enemy(3, 100, 10,'Yellow'))
+        queue.append(Enemy(3, 100, 10,'Yellow'))
+        queue.append(Enemy(3, 100, 10,'Yellow'))
     elif level == 3:
-        showNewEnemy(Enemy(4, 100, 100,'Green'))
-        queue.append(Enemy(3, 50, 10,'Yellow'))
-        queue.append(Enemy(3, 50, 10,'Yellow'))
-        queue.append(Enemy(4, 100, 100,'Green'))
-        queue.append(Enemy(4, 100, 100,'Green'))
+        showNewEnemy(Enemy(4, 250, 100,'Green'))
+        queue.append(Enemy(3, 100, 10,'Yellow'))
+        queue.append(Enemy(3, 100, 10,'Yellow'))
+        queue.append(Enemy(4, 250, 100,'Green'))
+        queue.append(Enemy(4, 250, 100,'Green'))
     elif level == 4:
-        queue.append(Enemy(3, 50, 10,'Yellow'))
-        queue.append(Enemy(3, 50, 10,'Yellow'))
-        queue.append(Enemy(4, 100, 20,'Green'))
-        queue.append(Enemy(4, 100, 20,'Green'))
-        queue.append(Enemy(4, 100, 20,'Green'))
-        queue.append(Enemy(4, 100, 20,'Green'))
+        queue.append(Enemy(3, 100, 10,'Yellow'))
+        queue.append(Enemy(3, 100, 10,'Yellow'))
+        queue.append(Enemy(4, 250, 20,'Green'))
+        queue.append(Enemy(4, 250, 20,'Green'))
+        queue.append(Enemy(4, 250, 20,'Green'))
+        queue.append(Enemy(4, 250, 20,'Green'))
     elif level == 5:
-        showNewEnemy(Enemy(5, 200, 100,'Blue'))
+        showNewEnemy(Enemy(5, 500, 100,'Blue'))
         for i in range(0, 5):
-            queue.append(Enemy(4, 100, 20,'Green'))
-        queue.append(Enemy(5, 200, 100,'Blue'))
+            queue.append(Enemy(4, 250, 20,'Green'))
+        queue.append(Enemy(5, 500, 100,'Blue'))
     elif level == 6:
         for i in range(0, 5):
-            queue.append(Enemy(4, 100, 20,'Green'))
+            queue.append(Enemy(4, 250, 20,'Green'))
         for i in range(0, 5):
-            queue.append(Enemy(5, 200, 100,'Blue'))
+            queue.append(Enemy(5, 500, 100,'Blue'))
     elif level == 7:
         for i in range(0, 5):
-            queue.append(Enemy(3, 50, 10,'Yellow'))
+            queue.append(Enemy(3, 100, 10,'Yellow'))
         for i in range(0, 5):
-            queue.append(Enemy(4, 100, 20,'Green'))
+            queue.append(Enemy(4, 250, 20,'Green'))
         for i in range(0, 5):
-            queue.append(Enemy(5, 200, 100,'Blue'))
+            queue.append(Enemy(5, 500, 100,'Blue'))
     elif level == 8:
         for i in range(0, 7):
-            queue.append(Enemy(3, 50, 10,'Yellow'))
+            queue.append(Enemy(3, 100, 10,'Yellow'))
         for i in range(0, 7):
-            queue.append(Enemy(4, 100,20,'Green'))
+            queue.append(Enemy(4, 250,20,'Green'))
         for i in range(0, 7):
-            queue.append(Enemy(5, 200, 100,'Blue'))
+            queue.append(Enemy(5, 500, 100,'Blue'))
     elif level == 9:
         for i in range(0, 10):
-            queue.append(Enemy(3, 50, 10,'Yellow'))
+            queue.append(Enemy(3, 100, 10,'Yellow'))
         for i in range(0, 10):
-            queue.append(Enemy(4, 100, 20,'Green'))
+            queue.append(Enemy(4, 250, 20,'Green'))
         for i in range(0, 10):
-            queue.append(Enemy(5, 200, 100,'Blue'))
+            queue.append(Enemy(5, 500, 100,'Blue'))
     elif level == 10:
         showNewEnemy(Enemy(2, 1000, 500,'Red'))
         for i in range(0, 10):
-            queue.append(Enemy(3, 50, 10,'Yellow'))
+            queue.append(Enemy(3, 100, 10,'Yellow'))
         for i in range(0, 10):
-            queue.append(Enemy(4, 100, 20,'Green'))
+            queue.append(Enemy(4, 250, 20,'Green'))
         for i in range(0, 10):
-            queue.append(Enemy(5, 200, 100,'Blue'))
-        queue.append(Enemy(2, 5000, 500,'Red'))
+            queue.append(Enemy(5, 500, 100,'Blue'))
+        queue.append(Enemy(2, 10000, 500,'Red'))
     else:
         red = level - 10
 
@@ -359,13 +359,13 @@ def startWave(level):
             multS = 1.5
 
         for i in range(level):
-            queue.append(Enemy(3*multS, 50*multH, 10, 'Yellow'))
+            queue.append(Enemy(3*multS, 100*multH, 10, 'Yellow'))
         for i in range(level):
-            queue.append(Enemy(4*multS, 100*multH, 20, 'Green'))
+            queue.append(Enemy(4*multS, 250*multH, 20, 'Green'))
         for i in range(level):
-            queue.append(Enemy(5*multS, 200*multH, 100, 'Blue'))
+            queue.append(Enemy(5*multS, 500*multH, 100, 'Blue'))
         for i in range(red):
-            queue.append(Enemy(2*multS, 5000*multH, 100, 'Red'))
+            queue.append(Enemy(2*multS, 10000*multH, 100, 'Red'))
 
 
 def showNewEnemy(EnemyObj):
