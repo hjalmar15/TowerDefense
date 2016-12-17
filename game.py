@@ -242,7 +242,6 @@ def drawStats(gameStats):
 def drawQueue():
     if len(queue) > 0:
         if len(prev) == 0:
-            print("elifyes")
             creep = queue.pop()
             prev.append(creep)
             allEnemies.add(creep)
