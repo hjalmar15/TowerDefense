@@ -12,7 +12,7 @@ class Tower(pygame.sprite.Sprite):
             self.speed = 1.5
             self.bSpeed = 10
             self.rang = 400
-            self.cost = 300
+            self.cost = 600
             self.pene = 4
         elif type == 'Shooter':
             self.name = 'Shooter'
