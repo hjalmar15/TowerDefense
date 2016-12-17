@@ -84,6 +84,8 @@ def theGame():
     selectedTower = None
     # Initialize game
     run = True
+    message = ()
+    messageTime = 0
     while run:
         drawBoard()
         drawButtons()
@@ -110,6 +112,14 @@ def theGame():
                     elif event.type == MOUSEBUTTONUP:
                         introMenu()
                         runWin = False
+        if len(message) > 0:
+            if messageTime > 0:
+                Disp = fontMin.render(message, 1, black)
+                Rect = Disp.get_rect()
+                Rect.topleft = (1075, 500)
+                DISPLAYSURF.blit(Disp, Rect)
+                messageTime -= 1
+
         if mouseClicked:
             whatClicked = click(mousex, mousey)
             if whatClicked == 'placeSh':
@@ -117,29 +127,23 @@ def theGame():
                 if gameStats[0] >= shooter.cost:
                         placeTower(7, gameStats)
                 else:
-                        monDisp = fontMin.render('Not enough money', 1, black)
-                        monRect = monDisp.get_rect()
-                        monRect.topleft = (1075, 500)
-                        DISPLAYSURF.blit(monDisp, monRect)
+                        message = "Not enough money"
+                        messageTime = 80
 
             if whatClicked == 'placeB':
                 bomber = Bomber(1050, 120)
                 if gameStats[0] >= bomber.cost:
                         placeTower(8, gameStats)
                 else:
-                        monDisp = fontMin.render('Not enough money', 1, black)
-                        monRect = monDisp.get_rect()
-                        monRect.topleft = (1075, 500)
-                        DISPLAYSURF.blit(monDisp, monRect)
+                        message = "Not enough money"
+                        messageTime = 80
             if whatClicked == 'placeSn':
                 sniper = Sniper(1050, 280)
                 if gameStats[0] >= sniper.cost:
                         placeTower(9, gameStats)
                 else:
-                        monDisp = fontMin.render('Not enough money', 1, black)
-                        monRect = monDisp.get_rect()
-                        monRect.topleft = (1075, 500)
-                        DISPLAYSURF.blit(monDisp, monRect)
+                        message = "Not enough money"
+                        messageTime = 80
             if whatClicked == "start" and gameStats[1] < 10:
                 gameStats[1] += 1
                 gameStats[0] += 100
@@ -392,7 +396,7 @@ def placeTower(tower, gameStats):
                 runIt = False
 
         pygame.display.flip()
-        clock.tick(30)
+        clock.tick(60)
 
 
 def getGridAtPixel(mousex, mousey):
