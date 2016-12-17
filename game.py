@@ -350,13 +350,13 @@ def startWave(level):
 
         if level > 10 and level < 15:
             multH = 2
-            multS = 1.005
+            multS = 1.01
         if level >= 15 and level < 20:
             multH = 3
-            multS = 1.02
+            multS = 1.1
         if level >= 20:
             multH = 4
-            multS = 1.1
+            multS = 1.5
 
         for i in range(level):
             queue.append(Enemy(2*multS, 50*multH, 10, 'Yellow'))
