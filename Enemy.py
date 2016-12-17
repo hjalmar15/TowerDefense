@@ -222,6 +222,7 @@ class Blue(pygame.sprite.Sprite):
                     x.remove()
                     self.kill()
                     self.remove()
+                    allEnemies.remove(self)
                     gameStats[0] += self.reward
                     gameStats[3] += self.maxHealth
 
@@ -255,6 +256,7 @@ class Red(pygame.sprite.Sprite):
             gameStats[2] -= 1
             self.kill()
             self.remove()
+            allEnemies.remove(self)
         a,b = PATH[self.count]
         #right
         if self.rect.x < (a*40) and self.rect.y == (b*40):
@@ -295,5 +297,6 @@ class Red(pygame.sprite.Sprite):
                     x.remove()
                     self.kill()
                     self.remove()
+                    allEnemies.remove(self)
                     gameStats[0] += self.reward
                     gameStats[3] += self.maxHealth

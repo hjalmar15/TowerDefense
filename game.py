@@ -241,10 +241,15 @@ def drawStats(gameStats):
 def drawQueue():
     if len(queue) > 0:
         if len(prev) == 0:
+            print("elifyes")
             creep = queue.pop()
             prev.append(creep)
             allEnemies.add(creep)
         elif not pygame.sprite.collide_rect(start, prev[0]):
+            creep = queue.pop()
+            prev[0] = (creep)
+            allEnemies.add(creep)
+        elif prev[0] not in allEnemies:
             creep = queue.pop()
             prev[0] = (creep)
             allEnemies.add(creep)
