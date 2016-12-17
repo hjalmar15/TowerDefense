@@ -357,10 +357,10 @@ def showNewEnemy(EnemyObj):
     pygame.display.flip()
     while runNewEnemy:
         for event in pygame.event.get():
-            if event.type == QUIT:
+            if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
-            elif event.type == MOUSEBUTTONUP:
+            elif event.type == pygame.MOUSEBUTTONUP:
                 runNewEnemy = False
 
 
