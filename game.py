@@ -456,7 +456,7 @@ def placeTower(tower, gameStats):
             if tilemap[y1][x1] == 1:
 
                 if (tower == 7):
-                    shooter = Tower(y1, x1,'Sniper')
+                    shooter = Tower(y1, x1,'Shooter')
                     gameStats[0] -= shooter.cost
 
                     towers.add(shooter)
