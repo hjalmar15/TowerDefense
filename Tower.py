@@ -12,7 +12,7 @@ class Tower(pygame.sprite.Sprite):
             self.speed = 1.5
             self.bSpeed = 10
             self.rang = 400
-            self.cost = 300
+            self.cost = 600
             self.pene = 4
         elif type == 'Shooter':
             self.name = 'Shooter'
@@ -54,7 +54,8 @@ class Tower(pygame.sprite.Sprite):
                     self.time = pygame.time.get_ticks()
                     #startX, startY, targetX, targetY, attack, range, speed, penet
                     allBullets.add(Bullet(self,self.rect.x + self.rang / 2 - 20, self.rect.y + self.rang / 2 - 20, s.rect.x, s.rect.y, self.attack, self.rang, self.bSpeed, self.pene))
-                    break
+                    if self.name != 'Shooter':
+                        break
 
 
 
