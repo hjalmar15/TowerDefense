@@ -85,6 +85,7 @@ def theGame():
     run = True
     message = ()
     messageTime = 0
+    pos = 0
     while run:
         drawBoard()
         drawButtons()
@@ -101,10 +102,15 @@ def theGame():
                 mousex, mousey = event.pos
             elif event.type == pygame.MOUSEBUTTONUP:
                 mousex, mousey = event.pos
+                pos = event.pos
                 mouseClicked = True
             if event.type == pygame.KEYDOWN:
                 keyPressed = True
                 pressed = pygame.key.get_pressed()
+
+        if messageTime == 0:
+            message = "Click enemy for HP"
+            messageTime = 5
         if gameStats[1] == 10 and len(allEnemies) == 0:
             youWin()
             gameStats[1] += 1
@@ -118,6 +124,12 @@ def theGame():
                 Rect.topleft = (1075, 500)
                 DISPLAYSURF.blit(Disp, Rect)
                 messageTime -= 1
+
+        if mouseClicked:
+            for x in allEnemies:
+                if x.rect.collidepoint(pos):
+                    message = "Health: "+ str(x.health) +"/"+ str(x.maxHealth)
+                    messageTime = 120
 
         if mouseClicked or keyPressed:
             whatClicked = click(mousex, mousey)
