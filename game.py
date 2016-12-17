@@ -337,7 +337,7 @@ def startWave(level):
         for i in range(0, 10):
             queue.append(Enemy(5, 500, 100,'Blue'))
     elif level == 10:
-        showNewEnemy(Enemy(2, 1000, 500,'Red'))
+        showNewEnemy(Enemy(2, 10000, 500,'Red'))
         for i in range(0, 10):
             queue.append(Enemy(3, 100, 10,'Yellow'))
         for i in range(0, 10):
