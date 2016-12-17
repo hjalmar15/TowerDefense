@@ -90,6 +90,8 @@ def theGame():
         drawQueue()
         drawStats(gameStats)
         mouseClicked = False
+        keyPressed = False
+        pressed = pygame.key.get_pressed()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -99,15 +101,18 @@ def theGame():
             elif event.type == pygame.MOUSEBUTTONUP:
                 mousex, mousey = event.pos
                 mouseClicked = True
+            if event.type == pygame.KEYDOWN:
+                keyPressed = True
+                pressed = pygame.key.get_pressed()
         if gameStats[1] == 10 and len(allEnemies) == 0:
             youWin()
             runWin = True
             while True:
                 for event in pygame.event.get():
-                    if event.type == QUIT:
+                    if event.type == pygame.QUIT:
                         pygame.quit()
                         quit()
-                    elif event.type == MOUSEBUTTONUP:
+                    elif event.type == pygame.MOUSEBUTTONUP:
                         introMenu()
                         runWin = False
         if len(message) > 0:
@@ -118,9 +123,9 @@ def theGame():
                 DISPLAYSURF.blit(Disp, Rect)
                 messageTime -= 1
 
-        if mouseClicked:
+        if mouseClicked or keyPressed:
             whatClicked = click(mousex, mousey)
-            if whatClicked == 'placeSh':
+            if whatClicked == 'placeSh' or pressed[pygame.K_s]:
                 shooter = Shooter(1050, 200)
                 if gameStats[0] >= shooter.cost:
                         placeTower(7, gameStats)
@@ -128,21 +133,21 @@ def theGame():
                         message = "Not enough money"
                         messageTime = 80
 
-            if whatClicked == 'placeB':
+            if whatClicked == 'placeB' or pressed[pygame.K_a]:
                 bomber = Bomber(1050, 120)
                 if gameStats[0] >= bomber.cost:
                         placeTower(8, gameStats)
                 else:
                         message = "Not enough money"
                         messageTime = 80
-            if whatClicked == 'placeSn':
+            if whatClicked == 'placeSn' or pressed[pygame.K_d]:
                 sniper = Sniper(1050, 280)
                 if gameStats[0] >= sniper.cost:
                         placeTower(9, gameStats)
                 else:
                         message = "Not enough money"
                         messageTime = 80
-            if whatClicked == "start" and gameStats[1] < 10:
+            if whatClicked == "start" or pressed[pygame.K_SPACE] and gameStats[1] < 10:
                 gameStats[1] += 1
                 gameStats[0] += 100
                 startWave(gameStats[1])
@@ -344,6 +349,8 @@ def placeTower(tower, gameStats):
         drawButtons()
         drawStats(gameStats)
         mouseClick = False
+        keyPressed = False
+        pressed = pygame.key.get_pressed()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -353,9 +360,15 @@ def placeTower(tower, gameStats):
             elif event.type == pygame.MOUSEBUTTONUP:
                 mousex, mousey = event.pos
                 mouseClick = True
+            if event.type == pygame.KEYDOWN:
+                keyPressed = True
+                pressed = pygame.key.get_pressed()
         img = textures[tower]
         screen.blit(img, (mousex - 20, mousey - 20))
 
+        if keyPressed:
+            if pressed[pygame.K_ESCAPE]:
+                runIt = False
         s = pygame.Surface((theTower.rang, theTower.rang))
         s.set_alpha(10)
         s.fill((255,255,255))
@@ -410,10 +423,10 @@ def youWin():
     pygame.display.flip()
     while runWin:
         for event in pygame.event.get():
-            if event.type == QUIT:
+            if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
-            elif event.type == MOUSEBUTTONUP:
+            elif event.type == pygame.MOUSEBUTTONUP:
                 pygame.quit()
                 quit()
 
@@ -424,10 +437,10 @@ def gameOver():
     pygame.display.flip()
     while runDefeat:
         for event in pygame.event.get():
-            if event.type == QUIT:
+            if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
-            elif event.type == MOUSEBUTTONUP:
+            elif event.type == pygame.MOUSEBUTTONUP:
                 pygame.quit()
                 quit()
 
